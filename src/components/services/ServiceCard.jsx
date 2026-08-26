@@ -1,44 +1,61 @@
-import { Link } from "react-router-dom";
+import Button from "../ui/Button";
 
 function ServiceCard({ service }) {
   return (
-    <article className="group flex flex-col items-center text-center">
-      <Link
-        to={`/services/${service.id}`}
-        className="relative block rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-        aria-label={`View ${service.name}`}
-      >
-        <div className="h-[132px] w-[132px] overflow-hidden rounded-full border-[6px] border-[#edf6ff] bg-[#edf6ff] shadow-sm transition-transform duration-200 group-hover:-translate-y-1 sm:h-[145px] sm:w-[145px]">
-          <img
-            src={service.image}
-            alt=""
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
-        </div>
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
 
-        <span
-          className="absolute bottom-0 right-0 flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-white bg-blue-600 text-sm font-bold text-white shadow-md"
-          aria-hidden="true"
-        >
+      {/* Image */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#edf7ff]">
+        <img
+          src={service.image}
+          alt={`${service.name} at GreenCare Clinic`}
+          className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+          loading="lazy"
+        />
+
+        <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-600 shadow-sm">
           {service.icon}
         </span>
-      </Link>
+      </div>
 
-      <h3 className="mt-4 text-[15px] font-bold text-[#102b4e] sm:text-base">
-        {service.name}
-      </h3>
+      {/* Content */}
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
 
-      <p className="mt-2 max-w-[190px] text-[12px] leading-5 text-slate-500 sm:text-[13px]">
-        {service.description}
-      </p>
+        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+          {service.category}
+        </span>
 
-      <Link
-        to={`/services/${service.id}`}
-        className="mt-3 text-xs font-semibold text-blue-600 hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-      >
-        Learn More →
-      </Link>
+        <h2 className="mt-2 text-lg font-bold text-[#102b4e]">
+          {service.name}
+        </h2>
+
+        <p className="mt-3 text-sm leading-6 text-slate-500">
+          {service.shortDescription}
+        </p>
+
+        <div className="mt-auto flex flex-col gap-2 pt-6">
+
+          <Button
+            to={`/services/${service.id}`}
+            variant="secondary"
+            size="sm"
+            className="w-full rounded-full"
+          >
+            Learn More →
+          </Button>
+
+          <Button
+            to="/appointments"
+            size="sm"
+            className="w-full rounded-full"
+          >
+            Book Appointment
+          </Button>
+
+        </div>
+
+      </div>
+
     </article>
   );
 }

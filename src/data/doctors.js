@@ -147,9 +147,9 @@ const doctors = [
       "Health Screening",
       "Wellness Care",
     ],
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=700&q=85",
-  },
-];
-
+ image:
+  "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=700&q=85", 
+}, 
+]; 
+ 
 export default doctors;

@@ -132,7 +132,7 @@ function Home() {
                 </Button>
 
                 <a
-                  href={`tel:${clinic.phone.replace(/\s/g, "")}`}
+                   href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 rounded-full text-sm text-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-600 shadow-sm">
@@ -627,111 +627,146 @@ function Home() {
       </section>
 
 
-      {/* =====================================================
-          CLINIC INFORMATION
-      ====================================================== */}
+     
 
-      <section className="bg-white py-16 sm:py-20">
+     {/* =====================================================
+    CLINIC INFORMATION
+====================================================== */}
 
-        <Container>
+<section className="bg-white py-16 sm:py-20">
 
-          <div className="mx-auto max-w-2xl text-center">
+  <Container>
 
-            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600">
-              Visit GreenCare
-            </p>
+    <div className="mx-auto max-w-2xl text-center">
 
-            <h2 className="mt-3 text-2xl font-bold text-[#102b4e] sm:text-3xl">
-              Clinic Information
-            </h2>
+      <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600">
+        Visit GreenCare
+      </p>
 
-          </div>
+      <h2 className="mt-3 text-2xl font-bold text-[#102b4e] sm:text-3xl">
+        Clinic Information
+      </h2>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    </div>
 
-            <div className="rounded-2xl border border-slate-100 p-6 text-center">
-              <span className="text-xl text-blue-600">
-                ☎
-              </span>
 
-              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-                Phone
-              </h3>
+    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-              <a
-                href={`tel:${clinic.phone.replace(/\s/g, "")}`}
-                className="mt-2 block text-xs text-slate-500 hover:text-blue-600"
-              >
-                {clinic.phone}
-              </a>
-            </div>
+      {/* PHONE */}
+      <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-            <div className="rounded-2xl border border-slate-100 p-6 text-center">
-              <span className="text-xl text-blue-600">
-                @
-              </span>
+        <span className="text-xl text-blue-600">
+          ☎
+        </span>
 
-              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-                Email
-              </h3>
+        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+          Phone
+        </h3>
 
-              <a
-                href={`mailto:${clinic.email}`}
-                className="mt-2 block break-all text-xs text-slate-500 hover:text-blue-600"
-              >
-                {clinic.email}
-              </a>
-            </div>
+        <a
+          href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
+          className="mt-2 block text-xs text-slate-500 hover:text-blue-600"
+        >
+          {clinic.contact.phone}
+        </a>
 
-            <div className="rounded-2xl border border-slate-100 p-6 text-center">
-              <span className="text-xl text-blue-600">
-                ⌖
-              </span>
+      </div>
 
-              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-                Address
-              </h3>
 
-              <address className="mt-2 text-xs leading-5 text-slate-500 not-italic">
-                {clinic.address.line1}
-                <br />
-                {clinic.address.line2}
-              </address>
+      {/* EMAIL */}
+      <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-              <a
-                href={clinic.directionsUrl}
-                className="mt-3 block text-xs font-semibold text-blue-600"
-              >
-                Get Directions →
-              </a>
-            </div>
+        <span className="text-xl text-blue-600">
+          @
+        </span>
 
-            <div className="rounded-2xl border border-slate-100 p-6 text-center">
-              <span className="text-xl text-blue-600">
-                ◷
-              </span>
+        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+          Email
+        </h3>
 
-              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-                Working Hours
-              </h3>
+        <a
+          href={`mailto:${clinic.contact.email}`}
+          className="mt-2 block break-all text-xs text-slate-500 hover:text-blue-600"
+        >
+          {clinic.contact.email}
+        </a>
 
-              <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-500">
-                {clinic.workingHours.map((item) => (
-                  <li key={item.day}>
-                    <span className="font-semibold text-slate-700">
-                      {item.day}:
-                    </span>{" "}
-                    {item.time}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      </div>
 
-          </div>
 
-        </Container>
+      {/* ADDRESS */}
+      <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-      </section>
+        <span className="text-xl text-blue-600">
+          ⌖
+        </span>
+
+        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+          Address
+        </h3>
+
+        <address className="mt-2 text-xs leading-5 text-slate-500 not-italic">
+
+          {clinic.contact.address.line1}
+
+          <br />
+
+          {clinic.contact.address.line2}
+
+          <br />
+
+          {clinic.contact.address.city},{" "}
+          {clinic.contact.address.state}
+
+          <br />
+
+          {clinic.contact.address.postalCode}
+
+        </address>
+
+        <span className="mt-3 block text-xs font-semibold text-blue-600">
+          Get Directions →
+        </span>
+
+      </div>
+
+
+      {/* WORKING HOURS */}
+      <div className="rounded-2xl border border-slate-100 p-6 text-center">
+
+        <span className="text-xl text-blue-600">
+          ◷
+        </span>
+
+        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+          Working Hours
+        </h3>
+
+        <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-500">
+
+          {clinic.workingHours.map((item) => (
+
+            <li key={item.day}>
+
+              <span className="font-semibold text-slate-700">
+                {item.day}:
+              </span>{" "}
+
+              {item.hours}
+
+            </li>
+
+          ))}
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </Container>
+
+</section>
 
     </main>
   );

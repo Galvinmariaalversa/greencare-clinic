@@ -4,6 +4,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Doctors from "./pages/Doctors";
 import DoctorDetails from "./pages/DoctorDetails";
+import Services from "./pages/Services";
+import ServiceDetails from "./pages/ServiceDetails";
+import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import Appointment from "./pages/Appointment";
 
 function RoutePlaceholder({ title }) {
   return (
@@ -46,33 +51,20 @@ function App() {
           />
 
           {/* Services */}
-          <Route
-            path="/services"
-            element={<RoutePlaceholder title="Services" />}
-          />
-
-          <Route
-            path="/services/:id"
-            element={<RoutePlaceholder title="Service Details" />}
-          />
+      <Route path="/services" element={<Services />} />
+      <Route
+      path="/services/:id"
+      element={<ServiceDetails />}
+      />
 
           {/* Contact */}
-          <Route
-            path="/contact"
-            element={<RoutePlaceholder title="Contact" />}
-          />
+        <Route path="/contact" element={<Contact />} />
 
           {/* Appointment */}
-          <Route
-            path="/appointments"
-            element={<RoutePlaceholder title="Book Appointment" />}
-          />
+       <Route path="/appointments" element={<Appointment />} />
 
           {/* FAQ */}
-          <Route
-            path="/faq"
-            element={<RoutePlaceholder title="FAQ" />}
-          />
+         <Route path="/faq" element={<FAQ />} />
 
           {/* Legal */}
           <Route

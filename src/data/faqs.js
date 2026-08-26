@@ -1,33 +1,98 @@
 const faqs = [
   {
-    id: 1,
-    question: "How can I book an appointment?",
+    id: "general-1",
+    category: "General",
+    question: "What is GreenCare Clinic?",
     answer:
-      "You can book an appointment through our online appointment flow. Select a service, choose an available doctor and time, then provide the requested patient details.",
+      "GreenCare Clinic is a healthcare website concept designed to help patients explore available services, healthcare professionals, and appointment options in one place.",
   },
   {
-    id: 2,
-    question: "Can I choose a specific doctor?",
+    id: "general-2",
+    category: "General",
+    question: "How can I contact the clinic?",
     answer:
-      "Yes. The appointment flow will allow you to select from available doctors for the service you need.",
+      "You can contact the clinic through the phone number, email address, or contact form provided on the Contact page.",
   },
   {
-    id: 3,
-    question: "What should I bring to my appointment?",
+    id: "appointments-1",
+    category: "Appointments",
+    question: "How do I book an appointment?",
     answer:
-      "Bring any relevant identification, previous medical records that may help your consultation, and details of any current medications if applicable.",
+      "You can use the Book Appointment option on the website and follow the appointment steps to select the relevant service, doctor, date, and time.",
   },
   {
-    id: 4,
-    question: "Can I reschedule an appointment?",
+    id: "appointments-2",
+    category: "Appointments",
+    question: "Can I choose a preferred doctor?",
     answer:
-      "Appointment changes will depend on the clinic's scheduling policy and available slots. Contact the clinic directly if you need assistance.",
+      "Where availability allows, you can select a preferred healthcare professional during the appointment process.",
   },
   {
-    id: 5,
+    id: "appointments-3",
+    category: "Appointments",
+    question: "What information do I need when booking?",
+    answer:
+      "You may be asked to provide basic contact information and appointment preferences. The exact information required will be shown during the booking process.",
+  },
+
+  {
+    id: "doctors-1",
+    category: "Doctors",
+    question: "Where can I see information about the doctors?",
+    answer:
+      "The Doctors page provides information about available healthcare professionals, including their specialization, qualification, experience, and profile details.",
+  },
+  {
+    id: "doctors-2",
+    category: "Doctors",
+    question: "Can I view a doctor's profile before booking?",
+    answer:
+      "Yes. You can open an individual doctor's profile to review the available information before proceeding to an appointment.",
+  },
+
+  {
+    id: "services-1",
+    category: "Services",
+    question: "Where can I see the available services?",
+    answer:
+      "The Services page contains the currently listed healthcare services. Each service has its own details page with additional information.",
+  },
+  {
+    id: "services-2",
+    category: "Services",
+    question: "Can I book directly from a service page?",
+    answer:
+      "Yes. Each service details page includes a Book Appointment option that takes you to the appointment workflow.",
+  },
+
+  {
+    id: "cancellation-1",
+    category: "Cancellation",
+    question: "How can I cancel an appointment?",
+    answer:
+      "Appointment cancellation procedures depend on the clinic's final booking policy. The applicable policy will be provided when the appointment system is finalized.",
+  },
+  {
+    id: "cancellation-2",
+    category: "Cancellation",
+    question: "Can I change my appointment time?",
+    answer:
+      "Appointment changes depend on availability and the clinic's final scheduling policy. Please contact the clinic if you need assistance with an existing appointment.",
+  },
+
+  {
+    id: "clinic-1",
+    category: "Clinic",
     question: "What are the clinic working hours?",
     answer:
-      "GreenCare Clinic is open Monday through Friday from 8:00 AM to 6:00 PM and Saturday from 9:00 AM to 2:00 PM. The clinic is closed on Sunday.",
+      "The current working hours are displayed on the Contact page. Please check the latest clinic information before planning your visit.",
+  },
+  {
+    id: "clinic-2",
+    category: "Clinic",
+    question: "Where is GreenCare Clinic located?",
+    answer:
+      "The clinic address is displayed on the Contact page. The current website uses placeholder location information until the final client-approved address is provided.",
   },
 ];
 

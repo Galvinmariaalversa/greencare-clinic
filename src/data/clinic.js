@@ -1,33 +1,62 @@
 const clinic = {
   name: "GreenCare Clinic",
 
-  tagline: "Expert care for healthier lives.",
-
+  // Existing Home page compatibility
   phone: "+91 00000 00000",
-
-  email: "info@greencareclinic.com",
+  email: "hello@greencareclinic.com",
 
   address: {
     line1: "GreenCare Clinic",
-    line2: "Chennai, Tamil Nadu, India",
+    line2: "Address to be confirmed",
+    city: "Chennai",
+    state: "Tamil Nadu",
+    postalCode: "000000",
+  },
+
+  // Contact page structure
+  contact: {
+    phone: "+91 00000 00000",
+    email: "hello@greencareclinic.com",
+
+    address: {
+      line1: "GreenCare Clinic",
+      line2: "Address to be confirmed",
+      city: "Chennai",
+      state: "Tamil Nadu",
+      postalCode: "000000",
+    },
   },
 
   workingHours: [
     {
-      day: "Monday – Friday",
-      time: "8:00 AM – 6:00 PM",
+      day: "Monday",
+      hours: "9:00 AM – 6:00 PM",
+    },
+    {
+      day: "Tuesday",
+      hours: "9:00 AM – 6:00 PM",
+    },
+    {
+      day: "Wednesday",
+      hours: "9:00 AM – 6:00 PM",
+    },
+    {
+      day: "Thursday",
+      hours: "9:00 AM – 6:00 PM",
+    },
+    {
+      day: "Friday",
+      hours: "9:00 AM – 6:00 PM",
     },
     {
       day: "Saturday",
-      time: "9:00 AM – 2:00 PM",
+      hours: "9:00 AM – 2:00 PM",
     },
     {
       day: "Sunday",
-      time: "Closed",
+      hours: "Closed",
     },
   ],
-
-  directionsUrl: "#",
 };
 
 export default clinic;
