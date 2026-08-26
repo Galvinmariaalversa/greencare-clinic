@@ -99,9 +99,11 @@ function Home() {
 
       <section className="bg-[#edf7ff]">
         <Container>
+
           <div className="grid min-h-[560px] items-center gap-8 py-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-0 lg:py-0">
 
             {/* LEFT */}
+
             <div className="relative z-10 max-w-[560px] py-8 lg:py-20">
 
               <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600 sm:text-xs">
@@ -126,49 +128,58 @@ function Home() {
                   className="rounded-full px-5"
                 >
                   Book Appointment
+
                   <span className="ml-2 flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
                     →
                   </span>
                 </Button>
 
                 <a
-                   href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
+                  href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 rounded-full text-sm text-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
                 >
+
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-600 shadow-sm">
                     ☎
                   </span>
 
                   <span>
+
                     <span className="block font-semibold text-[#102b4e]">
-                      {clinic.phone}
+                      {clinic.contact.phone}
                     </span>
 
                     <span className="block text-xs text-slate-500">
                       Call us anytime
                     </span>
+
                   </span>
+
                 </a>
 
               </div>
+
             </div>
 
+
             {/* RIGHT IMAGE */}
+
             <div className="relative h-full min-h-[430px] lg:min-h-[560px]">
 
-              <div className="absolute inset-y-0 right-[-32px] left-[-20px] overflow-hidden rounded-l-[50%] rounded-br-[0] lg:right-[-80px]">
+              <div className="absolute inset-y-0 right-[-32px] left-[-20px] overflow-hidden rounded-l-[50%] lg:right-[-80px]">
+
                 <img
                   src={heroImage}
                   alt="GreenCare healthcare professional providing patient care"
                   className="h-full w-full object-cover"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#edf7ff]/20" />
               </div>
 
             </div>
 
           </div>
+
         </Container>
       </section>
 
@@ -198,13 +209,22 @@ function Home() {
 
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-4 sm:gap-8 lg:mt-12 lg:gap-12">
+
+          {/* MOBILE: 1
+              TABLET: 2
+              DESKTOP: 4 */}
+
+          <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:grid-cols-4 lg:gap-12">
 
             {featuredServices.map((service) => (
-              <ServiceCard
+
+              <div
                 key={service.id}
-                service={service}
-              />
+                className="w-full"
+              >
+                <ServiceCard service={service} />
+              </div>
+
             ))}
 
           </div>
@@ -213,109 +233,177 @@ function Home() {
 
       </section>
 
-     {/* =====================================================
-    OUR PRACTICE
-====================================================== */}
 
-<section className="bg-[#edf7ff]">
+      {/* =====================================================
+          OUR PRACTICE
+      ====================================================== */}
 
-  <Container>
+      <section className="overflow-hidden bg-[#edf7ff]">
 
-    <div className="grid min-h-[480px] items-center lg:grid-cols-2">
+        <Container>
 
-      {/* LEFT */}
-      <div className="py-16 pr-0 lg:py-20 lg:pr-14">
+          <div className="grid items-center lg:grid-cols-2">
 
-        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600 sm:text-xs">
-          Our Practice
-        </p>
+            {/* LEFT CONTENT */}
 
-        <h2 className="mt-3 max-w-md text-3xl font-bold leading-tight text-[#102b4e] sm:text-4xl">
-          We provide top quality healthcare.
-        </h2>
+            <div className="py-14 sm:py-16 lg:py-20 lg:pr-14">
 
-        <p className="mt-4 max-w-lg text-sm leading-6 text-slate-600">
-          Our clinic is designed to provide professional healthcare
-          services in a welcoming environment. We focus on clear
-          communication, convenient access, and patient-centered care.
-        </p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600 sm:text-xs">
+                Our Practice
+              </p>
 
-        <div className="mt-7 space-y-5">
+              <h2 className="mt-3 max-w-md text-3xl font-bold leading-tight text-[#102b4e] sm:text-4xl">
+                We provide top quality healthcare.
+              </h2>
 
-          {practiceFeatures.map((feature) => (
-            <div
-              key={feature.title}
-              className="flex items-start gap-4"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm">
-                {feature.icon}
-              </span>
+              <p className="mt-4 max-w-lg text-sm leading-6 text-slate-600 sm:text-[15px]">
+                Our clinic is designed to provide professional healthcare
+                services in a welcoming environment. We focus on clear
+                communication, convenient access, and patient-centered care.
+              </p>
 
-              <div>
-                <h3 className="text-sm font-bold text-[#102b4e]">
-                  {feature.title}
-                </h3>
 
-                <p className="mt-1 max-w-sm text-xs leading-5 text-slate-500">
-                  {feature.description}
-                </p>
+              {/* FEATURES */}
+
+              <div className="mt-7 space-y-5">
+
+                {practiceFeatures.map((feature) => (
+
+                  <div
+                    key={feature.title}
+                    className="flex items-start gap-3 sm:gap-4"
+                  >
+
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm sm:h-11 sm:w-11">
+                      {feature.icon}
+                    </span>
+
+                    <div className="min-w-0">
+
+                      <h3 className="text-sm font-bold text-[#102b4e] sm:text-[15px]">
+                        {feature.title}
+                      </h3>
+
+                      <p className="mt-1 max-w-md text-xs leading-5 text-slate-500 sm:text-sm">
+                        {feature.description}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                ))}
+
               </div>
+
+
+              {/* CTA */}
+
+              <div className="mt-7">
+
+                <Button
+                  to="/about"
+                  size="sm"
+                  className="rounded-full"
+                >
+                  Learn More About Us →
+                </Button>
+
+              </div>
+
             </div>
-          ))}
 
-        </div>
 
-        <div className="mt-7">
-          <Button
-            to="/about"
-            size="sm"
-            className="rounded-full"
-          >
-            Learn More About Us →
-          </Button>
-        </div>
+            {/* RIGHT IMAGE */}
 
-      </div>
+            <div
+              className="
+                relative
+                -mx-4
+                h-[280px]
+                sm:mx-0
+                sm:h-[360px]
+                lg:mx-0
+                lg:h-[500px]
+              "
+            >
 
-      {/* RIGHT IMAGE */}
-      <div className="relative h-full min-h-[430px] overflow-hidden lg:min-h-[480px]">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  overflow-hidden
+                  rounded-none
+                  sm:rounded-3xl
+                  lg:rounded-tl-[45%]
+                  lg:rounded-br-[45%]
+                "
+              >
 
-        <div className="absolute inset-0 overflow-hidden rounded-tl-[45%] rounded-br-[45%]">
+                <img
+                  src={practiceImage}
+                  alt="Modern GreenCare Clinic examination room"
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
 
-          <img
-            src={practiceImage}
-            alt="Modern GreenCare Clinic examination room"
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
+              </div>
 
-        </div>
 
-        <div className="absolute bottom-8 right-6 flex items-center gap-3 rounded-full bg-blue-600 px-5 py-3 text-white shadow-lg">
+              {/* APPOINTMENT BADGE */}
 
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20">
-            ◷
-          </span>
+              <div
+                className="
+                  absolute
+                  bottom-4
+                  left-4
+                  right-4
+                  flex
+                  items-center
+                  gap-3
+                  rounded-2xl
+                  bg-blue-600
+                  px-4
+                  py-3
+                  text-white
+                  shadow-lg
+                  sm:bottom-6
+                  sm:left-auto
+                  sm:right-6
+                  sm:w-auto
+                  sm:max-w-[320px]
+                  sm:rounded-full
+                  sm:px-5
+                  sm:py-3
+                "
+              >
 
-          <div>
-            <p className="text-xs font-bold sm:text-sm">
-              Convenient Appointments
-            </p>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/20">
+                  ◷
+                </span>
 
-            <p className="text-[10px] text-blue-100 sm:text-xs">
-              Healthcare designed around you
-            </p>
+                <div className="min-w-0">
+
+                  <p className="truncate text-xs font-bold sm:text-sm">
+                    Convenient Appointments
+                  </p>
+
+                  <p className="mt-0.5 truncate text-[10px] text-blue-100 sm:text-xs">
+                    Healthcare designed around you
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+        </Container>
 
-      </div>
+      </section>
 
-    </div>
-
-  </Container>
-
-</section>
 
       {/* =====================================================
           WHY CHOOSE GREENCARE
@@ -340,6 +428,7 @@ function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
             {whyChooseUs.map((item) => (
+
               <article
                 key={item.number}
                 className="rounded-2xl border border-slate-100 bg-white p-6 text-center shadow-sm"
@@ -358,6 +447,7 @@ function Home() {
                 </p>
 
               </article>
+
             ))}
 
           </div>
@@ -392,24 +482,36 @@ function Home() {
 
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-4 sm:gap-8 lg:mt-12 lg:gap-12">
+
+          {/* MOBILE: 1
+              TABLET: 2
+              DESKTOP: 4 */}
+
+          <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:grid-cols-4 lg:gap-12">
 
             {featuredDoctors.map((doctor) => (
-              <DoctorCard
+
+              <div
                 key={doctor.id}
-                doctor={doctor}
-              />
+                className="w-full"
+              >
+                <DoctorCard doctor={doctor} />
+              </div>
+
             ))}
 
           </div>
 
+
           <div className="mt-10 text-center">
+
             <Link
               to="/doctors"
-              className="text-sm font-semibold text-blue-600 hover:text-blue-700"
+              className="text-sm font-semibold text-blue-600 hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
             >
               View All Doctors →
             </Link>
+
           </div>
 
         </Container>
@@ -440,6 +542,7 @@ function Home() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
 
             {appointmentSteps.map((step, index) => (
+
               <div
                 key={step.number}
                 className="relative text-center"
@@ -454,10 +557,13 @@ function Home() {
                 </h3>
 
                 {index < appointmentSteps.length - 1 && (
+
                   <div className="absolute left-[65%] right-[-25%] top-6 hidden h-px bg-blue-100 lg:block" />
+
                 )}
 
               </div>
+
             ))}
 
           </div>
@@ -490,6 +596,7 @@ function Home() {
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
 
             {testimonials.map((testimonial) => (
+
               <article
                 key={testimonial.id}
                 className="rounded-2xl border border-slate-100 bg-[#f8fbfe] p-6"
@@ -504,6 +611,7 @@ function Home() {
                 </blockquote>
 
                 <div className="mt-5">
+
                   <p className="text-sm font-bold text-[#102b4e]">
                     {testimonial.name}
                   </p>
@@ -511,9 +619,11 @@ function Home() {
                   <p className="mt-1 text-xs text-slate-400">
                     {testimonial.role}
                   </p>
+
                 </div>
 
               </article>
+
             ))}
 
           </div>
@@ -549,6 +659,7 @@ function Home() {
               </p>
 
               <div className="mt-6">
+
                 <Button
                   to="/faq"
                   variant="secondary"
@@ -557,6 +668,7 @@ function Home() {
                 >
                   View All FAQs
                 </Button>
+
               </div>
 
             </div>
@@ -627,146 +739,147 @@ function Home() {
       </section>
 
 
-     
+      {/* =====================================================
+          CLINIC INFORMATION
+      ====================================================== */}
 
-     {/* =====================================================
-    CLINIC INFORMATION
-====================================================== */}
+      <section className="bg-white py-16 sm:py-20">
 
-<section className="bg-white py-16 sm:py-20">
+        <Container>
 
-  <Container>
+          <div className="mx-auto max-w-2xl text-center">
 
-    <div className="mx-auto max-w-2xl text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600">
+              Visit GreenCare
+            </p>
 
-      <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600">
-        Visit GreenCare
-      </p>
+            <h2 className="mt-3 text-2xl font-bold text-[#102b4e] sm:text-3xl">
+              Clinic Information
+            </h2>
 
-      <h2 className="mt-3 text-2xl font-bold text-[#102b4e] sm:text-3xl">
-        Clinic Information
-      </h2>
+          </div>
 
-    </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
+            {/* PHONE */}
 
-    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-      {/* PHONE */}
-      <div className="rounded-2xl border border-slate-100 p-6 text-center">
+              <span className="text-xl text-blue-600">
+                ☎
+              </span>
 
-        <span className="text-xl text-blue-600">
-          ☎
-        </span>
+              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+                Phone
+              </h3>
 
-        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-          Phone
-        </h3>
+              <a
+                href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
+                className="mt-2 block text-xs text-slate-500 hover:text-blue-600"
+              >
+                {clinic.contact.phone}
+              </a>
 
-        <a
-          href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
-          className="mt-2 block text-xs text-slate-500 hover:text-blue-600"
-        >
-          {clinic.contact.phone}
-        </a>
-
-      </div>
+            </div>
 
 
-      {/* EMAIL */}
-      <div className="rounded-2xl border border-slate-100 p-6 text-center">
+            {/* EMAIL */}
 
-        <span className="text-xl text-blue-600">
-          @
-        </span>
+            <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-          Email
-        </h3>
+              <span className="text-xl text-blue-600">
+                @
+              </span>
 
-        <a
-          href={`mailto:${clinic.contact.email}`}
-          className="mt-2 block break-all text-xs text-slate-500 hover:text-blue-600"
-        >
-          {clinic.contact.email}
-        </a>
+              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+                Email
+              </h3>
 
-      </div>
+              <a
+                href={`mailto:${clinic.contact.email}`}
+                className="mt-2 block break-all text-xs text-slate-500 hover:text-blue-600"
+              >
+                {clinic.contact.email}
+              </a>
 
-
-      {/* ADDRESS */}
-      <div className="rounded-2xl border border-slate-100 p-6 text-center">
-
-        <span className="text-xl text-blue-600">
-          ⌖
-        </span>
-
-        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-          Address
-        </h3>
-
-        <address className="mt-2 text-xs leading-5 text-slate-500 not-italic">
-
-          {clinic.contact.address.line1}
-
-          <br />
-
-          {clinic.contact.address.line2}
-
-          <br />
-
-          {clinic.contact.address.city},{" "}
-          {clinic.contact.address.state}
-
-          <br />
-
-          {clinic.contact.address.postalCode}
-
-        </address>
-
-        <span className="mt-3 block text-xs font-semibold text-blue-600">
-          Get Directions →
-        </span>
-
-      </div>
+            </div>
 
 
-      {/* WORKING HOURS */}
-      <div className="rounded-2xl border border-slate-100 p-6 text-center">
+            {/* ADDRESS */}
 
-        <span className="text-xl text-blue-600">
-          ◷
-        </span>
+            <div className="rounded-2xl border border-slate-100 p-6 text-center">
 
-        <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
-          Working Hours
-        </h3>
+              <span className="text-xl text-blue-600">
+                ⌖
+              </span>
 
-        <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-500">
+              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+                Address
+              </h3>
 
-          {clinic.workingHours.map((item) => (
+              <address className="mt-2 text-xs leading-5 text-slate-500 not-italic">
 
-            <li key={item.day}>
+                {clinic.contact.address.line1}
 
-              <span className="font-semibold text-slate-700">
-                {item.day}:
-              </span>{" "}
+                <br />
 
-              {item.hours}
+                {clinic.contact.address.line2}
 
-            </li>
+                <br />
 
-          ))}
+                {clinic.contact.address.city},{" "}
+                {clinic.contact.address.state}
 
-        </ul>
+                <br />
 
-      </div>
+                {clinic.contact.address.postalCode}
 
-    </div>
+              </address>
 
-  </Container>
+              <span className="mt-3 block text-xs font-semibold text-blue-600">
+                Get Directions →
+              </span>
 
-</section>
+            </div>
+
+
+            {/* WORKING HOURS */}
+
+            <div className="rounded-2xl border border-slate-100 p-6 text-center">
+
+              <span className="text-xl text-blue-600">
+                ◷
+              </span>
+
+              <h3 className="mt-4 text-sm font-bold text-[#102b4e]">
+                Working Hours
+              </h3>
+
+              <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-500">
+
+                {clinic.workingHours.map((item) => (
+
+                  <li key={item.day}>
+
+                    <span className="font-semibold text-slate-700">
+                      {item.day}:
+                    </span>{" "}
+
+                    {item.hours}
+
+                  </li>
+
+                ))}
+
+              </ul>
+
+            </div>
+
+          </div>
+
+        </Container>
+
+      </section>
 
     </main>
   );
