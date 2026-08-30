@@ -7,7 +7,7 @@ import services from "../data/services";
 
 import {
   getDayName,
-  getTodayString,
+  initialValues,
 } from "../data/appointments";
 
 import AppointmentStepper from "../components/appointments/AppointmentStepper";
@@ -15,9 +15,7 @@ import DoctorSelector from "../components/appointments/DoctorSelector";
 import ServiceSelector from "../components/appointments/ServiceSelector";
 import DateSelector from "../components/appointments/DateSelector";
 import TimeSlotSelector from "../components/appointments/TimeSlotSelector";
-import PatientForm, {
-  initialValues,
-} from "../components/appointments/PatientForm";
+import PatientForm from "../components/appointments/PatientForm";
 import AppointmentSummary from "../components/appointments/AppointmentSummary";
 import AppointmentConfirmation from "../components/appointments/AppointmentConfirmation";
 

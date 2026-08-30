@@ -1,3 +1,12 @@
+export const initialValues = {
+  fullName: "",
+  phone: "",
+  email: "",
+  age: "",
+  gender: "",
+  reason: "",
+};
+
 export const appointmentSteps = [
   {
     id: 1,

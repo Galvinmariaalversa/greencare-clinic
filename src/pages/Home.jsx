@@ -168,11 +168,14 @@ function Home() {
 
               <div className="absolute inset-y-0 right-[-32px] left-[-20px] overflow-hidden rounded-l-[50%] lg:right-[-80px]">
 
-                <img
-                  src={heroImage}
-                  alt="GreenCare healthcare professional providing patient care"
-                  className="h-full w-full object-cover"
-                />
+              <img
+                src={heroImage}
+                alt="..."
+                className="..."
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                    />
 
               </div>
 

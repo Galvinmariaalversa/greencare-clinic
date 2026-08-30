@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ScrollToTop from "./components/layout/ScrollToTop";
 import PublicLayout from "./components/layout/PublicLayout";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Doctors from "./pages/Doctors";
@@ -9,6 +11,7 @@ import ServiceDetails from "./pages/ServiceDetails";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Appointment from "./pages/Appointment";
+
 
 function RoutePlaceholder({ title }) {
   return (
@@ -33,6 +36,9 @@ function RoutePlaceholder({ title }) {
 function App() {
   return (
     <BrowserRouter>
+      {/* Reset scroll position whenever the route changes */}
+      <ScrollToTop />
+
       <Routes>
         <Route element={<PublicLayout />}>
 
@@ -51,36 +57,55 @@ function App() {
           />
 
           {/* Services */}
-      <Route path="/services" element={<Services />} />
-      <Route
-      path="/services/:id"
-      element={<ServiceDetails />}
-      />
+          <Route
+            path="/services"
+            element={<Services />}
+          />
+
+          <Route
+            path="/services/:id"
+            element={<ServiceDetails />}
+          />
 
           {/* Contact */}
-        <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
 
           {/* Appointment */}
-       <Route path="/appointments" element={<Appointment />} />
+          <Route
+            path="/appointments"
+            element={<Appointment />}
+          />
 
           {/* FAQ */}
-         <Route path="/faq" element={<FAQ />} />
+          <Route
+            path="/faq"
+            element={<FAQ />}
+          />
 
           {/* Legal */}
           <Route
             path="/privacy"
-            element={<RoutePlaceholder title="Privacy Policy" />}
+            element={
+              <RoutePlaceholder title="Privacy Policy" />
+            }
           />
 
           <Route
             path="/terms"
-            element={<RoutePlaceholder title="Terms & Conditions" />}
+            element={
+              <RoutePlaceholder title="Terms & Conditions" />
+            }
           />
 
           {/* 404 */}
           <Route
             path="*"
-            element={<RoutePlaceholder title="Page Not Found" />}
+            element={
+              <RoutePlaceholder title="Page Not Found" />
+            }
           />
 
         </Route>

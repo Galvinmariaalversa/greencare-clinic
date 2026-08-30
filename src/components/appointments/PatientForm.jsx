@@ -1,14 +1,5 @@
 import { useState } from "react";
 
-export const initialValues = {
-  fullName: "",
-  phone: "",
-  email: "",
-  age: "",
-  gender: "",
-  reason: "",
-};
-
 function PatientForm({ values, onChange, onValidSubmit }) {
   const [errors, setErrors] = useState({});
 
@@ -27,9 +18,7 @@ function PatientForm({ values, onChange, onValidSubmit }) {
 
     if (!values.email.trim()) {
       nextErrors.email = "Email address is required.";
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)
-    ) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
       nextErrors.email = "Enter a valid email address.";
     }
 
@@ -82,6 +71,8 @@ function PatientForm({ values, onChange, onValidSubmit }) {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
+      {/* Header */}
+
       <div className="mb-6">
         <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
           Step 5
@@ -95,6 +86,8 @@ function PatientForm({ values, onChange, onValidSubmit }) {
           Enter your information to continue.
         </p>
       </div>
+
+      {/* Form fields */}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
@@ -146,6 +139,8 @@ function PatientForm({ values, onChange, onValidSubmit }) {
           placeholder="Age"
         />
 
+        {/* Gender */}
+
         <div>
           <label
             htmlFor="gender"
@@ -159,6 +154,10 @@ function PatientForm({ values, onChange, onValidSubmit }) {
             value={values.gender}
             onChange={(event) =>
               updateField("gender", event.target.value)
+            }
+            aria-invalid={Boolean(errors.gender)}
+            aria-describedby={
+              errors.gender ? "gender-error" : undefined
             }
             className={[
               "mt-2 w-full rounded-xl border bg-white px-4 py-3 text-sm",
@@ -179,11 +178,16 @@ function PatientForm({ values, onChange, onValidSubmit }) {
           </select>
 
           {errors.gender && (
-            <p className="mt-1 text-xs font-medium text-red-600">
+            <p
+              id="gender-error"
+              className="mt-1 text-xs font-medium text-red-600"
+            >
               {errors.gender}
             </p>
           )}
         </div>
+
+        {/* Reason */}
 
         <div className="sm:col-span-2">
           <label
@@ -201,6 +205,10 @@ function PatientForm({ values, onChange, onValidSubmit }) {
               updateField("reason", event.target.value)
             }
             placeholder="Briefly describe the reason for your appointment"
+            aria-invalid={Boolean(errors.reason)}
+            aria-describedby={
+              errors.reason ? "reason-error" : undefined
+            }
             className={[
               "mt-2 w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm",
               "outline-none transition",
@@ -212,17 +220,22 @@ function PatientForm({ values, onChange, onValidSubmit }) {
           />
 
           {errors.reason && (
-            <p className="mt-1 text-xs font-medium text-red-600">
+            <p
+              id="reason-error"
+              className="mt-1 text-xs font-medium text-red-600"
+            >
               {errors.reason}
             </p>
           )}
         </div>
       </div>
 
+      {/* Submit */}
+
       <div className="mt-7 flex justify-end">
         <button
           type="submit"
-          className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          className="min-h-11 rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           Continue to Review →
         </button>
@@ -261,6 +274,10 @@ function Field({
           onChange(event.target.value)
         }
         placeholder={placeholder}
+        aria-invalid={Boolean(error)}
+        aria-describedby={
+          error ? `${id}-error` : undefined
+        }
         className={[
           "mt-2 w-full rounded-xl border bg-white px-4 py-3 text-sm",
           "outline-none transition",
@@ -272,7 +289,10 @@ function Field({
       />
 
       {error && (
-        <p className="mt-1 text-xs font-medium text-red-600">
+        <p
+          id={`${id}-error`}
+          className="mt-1 text-xs font-medium text-red-600"
+        >
           {error}
         </p>
       )}
