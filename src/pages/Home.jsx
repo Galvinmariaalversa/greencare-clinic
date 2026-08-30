@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import heroImage from "../assets/greencare-hero.png";
 import practiceImage from "../assets/practice.png";
 
@@ -138,13 +139,11 @@ function Home() {
                   href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 rounded-full text-sm text-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
                 >
-
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-600 shadow-sm">
                     ☎
                   </span>
 
                   <span>
-
                     <span className="block font-semibold text-[#102b4e]">
                       {clinic.contact.phone}
                     </span>
@@ -152,15 +151,12 @@ function Home() {
                     <span className="block text-xs text-slate-500">
                       Call us anytime
                     </span>
-
                   </span>
-
                 </a>
 
               </div>
 
             </div>
-
 
             {/* RIGHT IMAGE */}
 
@@ -168,14 +164,16 @@ function Home() {
 
               <div className="absolute inset-y-0 right-[-32px] left-[-20px] overflow-hidden rounded-l-[50%] lg:right-[-80px]">
 
-              <img
-                src={heroImage}
-                alt="..."
-                className="..."
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                    />
+                <img
+                  src={heroImage}
+                  alt="GreenCare Clinic healthcare environment"
+                  className="h-full w-full object-cover object-center"
+                  width="1200"
+                  height="800"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
 
               </div>
 
@@ -211,11 +209,6 @@ function Home() {
             </p>
 
           </div>
-
-
-          {/* MOBILE: 1
-              TABLET: 2
-              DESKTOP: 4 */}
 
           <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:grid-cols-4 lg:gap-12">
 
@@ -265,7 +258,6 @@ function Home() {
                 communication, convenient access, and patient-centered care.
               </p>
 
-
               {/* FEATURES */}
 
               <div className="mt-7 space-y-5">
@@ -298,7 +290,6 @@ function Home() {
                 ))}
 
               </div>
-
 
               {/* CTA */}
 
@@ -347,7 +338,10 @@ function Home() {
                   src={practiceImage}
                   alt="Modern GreenCare Clinic examination room"
                   className="h-full w-full object-cover object-center"
+                  width="1000"
+                  height="700"
                   loading="lazy"
+                  decoding="async"
                 />
 
               </div>
@@ -485,10 +479,6 @@ function Home() {
 
           </div>
 
-
-          {/* MOBILE: 1
-              TABLET: 2
-              DESKTOP: 4 */}
 
           <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:grid-cols-4 lg:gap-12">
 

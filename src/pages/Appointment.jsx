@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
 
@@ -33,6 +33,17 @@ function Appointment() {
 
   const [workflowError, setWorkflowError] = useState("");
 
+  // Loading state for the frontend confirmation prototype.
+  const [isConfirming, setIsConfirming] = useState(false);
+
+  /*
+   * Controls the scroll position of the appointment workflow.
+   */
+  const bookingFlowRef = useRef(null);
+
+  /*
+   * Services available for the selected doctor.
+   */
   const availableServices = useMemo(() => {
     if (!selectedDoctor) {
       return [];
@@ -43,9 +54,28 @@ function Appointment() {
     );
   }, [selectedDoctor]);
 
+  /*
+   * Move the viewport to the beginning of the appointment
+   * workflow whenever the user moves to another step.
+   */
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      bookingFlowRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [currentStep]);
+
+  /*
+   * Doctor selection.
+   */
   function handleDoctorSelect(doctor) {
     setSelectedDoctor(doctor);
 
+    // Doctor change invalidates service/date/time.
     setSelectedService(null);
     setSelectedDate("");
     setSelectedTime("");
@@ -53,19 +83,31 @@ function Appointment() {
     setWorkflowError("");
   }
 
+  /*
+   * Service selection.
+   */
   function handleServiceSelect(service) {
     setSelectedService(service);
+
+    // Service change invalidates date/time.
     setSelectedDate("");
     setSelectedTime("");
+
     setWorkflowError("");
   }
 
+  /*
+   * Date selection.
+   */
   function handleDateSelect(date) {
     setSelectedDate(date);
     setSelectedTime("");
     setWorkflowError("");
   }
 
+  /*
+   * Validate the current appointment step.
+   */
   function validateCurrentStep() {
     setWorkflowError("");
 
@@ -93,18 +135,25 @@ function Appointment() {
         setWorkflowError(
           "The selected doctor is not available on this date."
         );
+
         return false;
       }
     }
 
     if (currentStep === 4 && !selectedTime) {
-      setWorkflowError("Please select an available time slot.");
+      setWorkflowError(
+        "Please select an available time slot."
+      );
+
       return false;
     }
 
     return true;
   }
 
+  /*
+   * Move to the next step.
+   */
   function handleNext() {
     if (!validateCurrentStep()) {
       return;
@@ -115,7 +164,14 @@ function Appointment() {
     }
   }
 
+  /*
+   * Move back to the previous step.
+   */
   function handleBack() {
+    if (isConfirming) {
+      return;
+    }
+
     setWorkflowError("");
 
     if (currentStep > 1) {
@@ -123,12 +179,27 @@ function Appointment() {
     }
   }
 
+  /*
+   * Patient form completed successfully.
+   */
   function handlePatientValid() {
     setWorkflowError("");
     setCurrentStep(6);
   }
 
+  /*
+   * Confirm appointment.
+   *
+   * This is intentionally frontend-only.
+   *
+   * The timeout simulates a future API request.
+   * No real appointment is created.
+   */
   function handleConfirm() {
+    if (isConfirming) {
+      return;
+    }
+
     if (
       !selectedDoctor ||
       !selectedService ||
@@ -143,39 +214,31 @@ function Appointment() {
       return;
     }
 
-    /*
-     * FRONTEND PROTOTYPE ONLY
-     *
-     * A future backend request would happen here.
-     *
-     * Example future architecture:
-     *
-     * await appointmentApi.create({
-     *   doctorId: selectedDoctor.id,
-     *   serviceId: selectedService.id,
-     *   date: selectedDate,
-     *   time: selectedTime,
-     *   patient,
-     * });
-     */
-
-    const reference = `GC-${Date.now()
-      .toString()
-      .slice(-8)}`;
-
-    setConfirmation({
-      referenceNumber: reference,
-      doctor: selectedDoctor,
-      service: selectedService,
-      date: selectedDate,
-      time: selectedTime,
-      patient,
-    });
-
     setWorkflowError("");
-    setCurrentStep(7);
+    setIsConfirming(true);
+
+    setTimeout(() => {
+      const reference = `GC-${Date.now()
+        .toString()
+        .slice(-8)}`;
+
+      setConfirmation({
+        referenceNumber: reference,
+        doctor: selectedDoctor,
+        service: selectedService,
+        date: selectedDate,
+        time: selectedTime,
+        patient,
+      });
+
+      setIsConfirming(false);
+      setCurrentStep(7);
+    }, 1000);
   }
 
+  /*
+   * Render the active appointment step.
+   */
   function renderStep() {
     switch (currentStep) {
       case 1:
@@ -237,14 +300,16 @@ function Appointment() {
 
       case 7:
         return (
-          <AppointmentConfirmation
-            doctor={confirmation?.doctor}
-            service={confirmation?.service}
-            date={confirmation?.date}
-            time={confirmation?.time}
-            patient={confirmation?.patient}
-            referenceNumber={confirmation?.referenceNumber}
-          />
+          <div className="appointment-success">
+            <AppointmentConfirmation
+              doctor={confirmation?.doctor}
+              service={confirmation?.service}
+              date={confirmation?.date}
+              time={confirmation?.time}
+              patient={confirmation?.patient}
+              referenceNumber={confirmation?.referenceNumber}
+            />
+          </div>
         );
 
       default:
@@ -252,16 +317,25 @@ function Appointment() {
     }
   }
 
+  /*
+   * Mark previous steps as completed.
+   */
   const completedSteps =
     currentStep === 7
       ? [1, 2, 3, 4, 5, 6]
       : Array.from(
-          { length: Math.max(currentStep - 1, 0) },
+          {
+            length: Math.max(currentStep - 1, 0),
+          },
           (_, index) => index + 1
         );
 
   return (
     <main className="bg-[#f8fbff]">
+      {/* =====================================================
+          PAGE HEADING
+      ====================================================== */}
+
       <section className="border-b border-slate-100 bg-white py-12 sm:py-16">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
@@ -281,23 +355,34 @@ function Appointment() {
         </Container>
       </section>
 
+      {/* =====================================================
+          BOOKING WORKFLOW
+      ====================================================== */}
+
       <section className="py-10 sm:py-14">
         <Container>
-          <div className="mx-auto max-w-5xl">
+          <div
+            ref={bookingFlowRef}
+            className="mx-auto max-w-5xl scroll-mt-24"
+          >
             <AppointmentStepper
               currentStep={currentStep}
               completedSteps={completedSteps}
             />
 
+            {/* Prototype notice */}
+
             {currentStep !== 7 && (
               <div className="mb-6 flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
                 <p className="text-xs leading-5 text-blue-800">
-                  <strong>Frontend prototype:</strong> appointment
-                  availability is mock data and is not permanently
-                  reserved.
+                  <strong>Frontend prototype:</strong>{" "}
+                  appointment availability is mock data and is not
+                  permanently reserved.
                 </p>
               </div>
             )}
+
+            {/* Workflow error */}
 
             {workflowError && (
               <div
@@ -308,15 +393,29 @@ function Appointment() {
               </div>
             )}
 
+            {/* =================================================
+                ANIMATED STEP CONTENT
+            ================================================== */}
+
             <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
-              {renderStep()}
+              <div
+                key={currentStep}
+                className="appointment-step-enter"
+              >
+                {renderStep()}
+              </div>
             </div>
+
+            {/* =================================================
+                STEPS 2–4 NAVIGATION
+            ================================================== */}
 
             {currentStep > 1 && currentStep < 5 && (
               <div className="mt-5 flex justify-between">
                 <Button
                   variant="secondary"
                   onClick={handleBack}
+                  disabled={isConfirming}
                 >
                   ← Back
                 </Button>
@@ -327,31 +426,59 @@ function Appointment() {
               </div>
             )}
 
+            {/* =================================================
+                PATIENT NAVIGATION
+            ================================================== */}
+
             {currentStep === 5 && (
               <div className="mt-5">
                 <Button
                   variant="secondary"
                   onClick={handleBack}
+                  disabled={isConfirming}
                 >
                   ← Back
                 </Button>
               </div>
             )}
 
+            {/* =================================================
+                REVIEW NAVIGATION
+            ================================================== */}
+
             {currentStep === 6 && (
               <div className="mt-5 flex justify-between gap-3">
                 <Button
                   variant="secondary"
                   onClick={handleBack}
+                  disabled={isConfirming}
                 >
                   ← Edit
                 </Button>
 
-                <Button onClick={handleConfirm}>
-                  Confirm Appointment
+                <Button
+                  onClick={handleConfirm}
+                  disabled={isConfirming}
+                >
+                  {isConfirming ? (
+                    <>
+                      <span
+                        className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"
+                        aria-hidden="true"
+                      />
+
+                      Confirming...
+                    </>
+                  ) : (
+                    "Confirm Appointment"
+                  )}
                 </Button>
               </div>
             )}
+
+            {/* =================================================
+                DOCTOR NAVIGATION
+            ================================================== */}
 
             {currentStep === 1 && selectedDoctor && (
               <div className="mt-5 flex justify-end">
@@ -360,6 +487,10 @@ function Appointment() {
                 </Button>
               </div>
             )}
+
+            {/* =================================================
+                CONFIRMATION
+            ================================================== */}
 
             {currentStep === 7 && (
               <div className="mt-5 text-center">
