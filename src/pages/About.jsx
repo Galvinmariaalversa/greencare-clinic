@@ -3,12 +3,22 @@
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
 import aboutContent from "../data/about";
+import SEO from "../components/seo/SEO";
 
 import practiceImage from "../assets/practice.png";
 import heroImage from "../assets/greencare-hero.png";
 
 function About() {
   return (
+
+  <>
+      <SEO
+        title="About GreenCare Clinic | Professional Healthcare"
+        description="Learn more about GreenCare Clinic, our healthcare approach, and our commitment to providing professional, patient-focused care for individuals and families."
+        canonical="https://greencare-clinic.vercel.app/about"
+      />
+
+    
     <main className="bg-white">
 
       {/* =====================================================
@@ -471,7 +481,8 @@ function About() {
           Existing global Footer renders through the layout.
       ====================================================== */}
 
-    </main>
+         </main>
+    </>
   );
 }
 

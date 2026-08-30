@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import SEO from "../components/seo/SEO";
+
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
 
@@ -39,11 +41,13 @@ function Appointment() {
   /*
    * Controls the scroll position of the appointment workflow.
    */
+
   const bookingFlowRef = useRef(null);
 
   /*
    * Services available for the selected doctor.
    */
+
   const availableServices = useMemo(() => {
     if (!selectedDoctor) {
       return [];
@@ -58,6 +62,7 @@ function Appointment() {
    * Move the viewport to the beginning of the appointment
    * workflow whenever the user moves to another step.
    */
+
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       bookingFlowRef.current?.scrollIntoView({
@@ -72,6 +77,7 @@ function Appointment() {
   /*
    * Doctor selection.
    */
+
   function handleDoctorSelect(doctor) {
     setSelectedDoctor(doctor);
 
@@ -86,6 +92,7 @@ function Appointment() {
   /*
    * Service selection.
    */
+
   function handleServiceSelect(service) {
     setSelectedService(service);
 
@@ -99,6 +106,7 @@ function Appointment() {
   /*
    * Date selection.
    */
+
   function handleDateSelect(date) {
     setSelectedDate(date);
     setSelectedTime("");
@@ -108,6 +116,7 @@ function Appointment() {
   /*
    * Validate the current appointment step.
    */
+
   function validateCurrentStep() {
     setWorkflowError("");
 
@@ -123,7 +132,9 @@ function Appointment() {
 
     if (currentStep === 3) {
       if (!selectedDate) {
-        setWorkflowError("Please select an appointment date.");
+        setWorkflowError(
+          "Please select an appointment date."
+        );
         return false;
       }
 
@@ -154,6 +165,7 @@ function Appointment() {
   /*
    * Move to the next step.
    */
+
   function handleNext() {
     if (!validateCurrentStep()) {
       return;
@@ -167,6 +179,7 @@ function Appointment() {
   /*
    * Move back to the previous step.
    */
+
   function handleBack() {
     if (isConfirming) {
       return;
@@ -182,6 +195,7 @@ function Appointment() {
   /*
    * Patient form completed successfully.
    */
+
   function handlePatientValid() {
     setWorkflowError("");
     setCurrentStep(6);
@@ -195,6 +209,7 @@ function Appointment() {
    * The timeout simulates a future API request.
    * No real appointment is created.
    */
+
   function handleConfirm() {
     if (isConfirming) {
       return;
@@ -239,6 +254,7 @@ function Appointment() {
   /*
    * Render the active appointment step.
    */
+
   function renderStep() {
     switch (currentStep) {
       case 1:
@@ -320,6 +336,7 @@ function Appointment() {
   /*
    * Mark previous steps as completed.
    */
+
   const completedSteps =
     currentStep === 7
       ? [1, 2, 3, 4, 5, 6]
@@ -331,179 +348,218 @@ function Appointment() {
         );
 
   return (
-    <main className="bg-[#f8fbff]">
-      {/* =====================================================
-          PAGE HEADING
-      ====================================================== */}
+    <>
+      <SEO
+        title="Book an Appointment | GreenCare Clinic"
+        description="Book an appointment with GreenCare Clinic by selecting a doctor, healthcare service, date, time, and providing your patient details."
+        canonical="https://greencare-clinic.vercel.app/appointments"
+      />
 
-      <section className="border-b border-slate-100 bg-white py-12 sm:py-16">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600 sm:text-xs">
-              GreenCare Clinic
-            </p>
+      <main className="bg-[#f8fbff]">
 
-            <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#102b4e] sm:text-4xl">
-              Book an Appointment
-            </h1>
+        {/* =====================================================
+            PAGE HEADING
+        ====================================================== */}
 
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
-              Select your doctor, service, preferred time, and
-              patient information to continue.
-            </p>
-          </div>
-        </Container>
-      </section>
+        <section className="border-b border-slate-100 bg-white py-12 sm:py-16">
+          <Container>
 
-      {/* =====================================================
-          BOOKING WORKFLOW
-      ====================================================== */}
+            <div className="mx-auto max-w-3xl text-center">
 
-      <section className="py-10 sm:py-14">
-        <Container>
-          <div
-            ref={bookingFlowRef}
-            className="mx-auto max-w-5xl scroll-mt-24"
-          >
-            <AppointmentStepper
-              currentStep={currentStep}
-              completedSteps={completedSteps}
-            />
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600 sm:text-xs">
+                GreenCare Clinic
+              </p>
 
-            {/* Prototype notice */}
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#102b4e] sm:text-4xl">
+                Book an Appointment
+              </h1>
 
-            {currentStep !== 7 && (
-              <div className="mb-6 flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
-                <p className="text-xs leading-5 text-blue-800">
-                  <strong>Frontend prototype:</strong>{" "}
-                  appointment availability is mock data and is not
-                  permanently reserved.
-                </p>
-              </div>
-            )}
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
+                Select your doctor, service, preferred time, and
+                patient information to continue.
+              </p>
 
-            {/* Workflow error */}
-
-            {workflowError && (
-              <div
-                role="alert"
-                className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
-              >
-                {workflowError}
-              </div>
-            )}
-
-            {/* =================================================
-                ANIMATED STEP CONTENT
-            ================================================== */}
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
-              <div
-                key={currentStep}
-                className="appointment-step-enter"
-              >
-                {renderStep()}
-              </div>
             </div>
 
-            {/* =================================================
-                STEPS 2–4 NAVIGATION
-            ================================================== */}
+          </Container>
+        </section>
 
-            {currentStep > 1 && currentStep < 5 && (
-              <div className="mt-5 flex justify-between">
-                <Button
-                  variant="secondary"
-                  onClick={handleBack}
-                  disabled={isConfirming}
+
+        {/* =====================================================
+            BOOKING WORKFLOW
+        ====================================================== */}
+
+        <section className="py-10 sm:py-14">
+          <Container>
+
+            <div
+              ref={bookingFlowRef}
+              className="mx-auto max-w-5xl scroll-mt-24"
+            >
+
+              <AppointmentStepper
+                currentStep={currentStep}
+                completedSteps={completedSteps}
+              />
+
+
+              {/* Prototype notice */}
+
+              {currentStep !== 7 && (
+                <div className="mb-6 flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
+                  <p className="text-xs leading-5 text-blue-800">
+                    <strong>Frontend prototype:</strong>{" "}
+                    appointment availability is mock data and is not
+                    permanently reserved.
+                  </p>
+                </div>
+              )}
+
+
+              {/* Workflow error */}
+
+              {workflowError && (
+                <div
+                  role="alert"
+                  className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
                 >
-                  ← Back
-                </Button>
+                  {workflowError}
+                </div>
+              )}
 
-                <Button onClick={handleNext}>
-                  Continue →
-                </Button>
-              </div>
-            )}
 
-            {/* =================================================
-                PATIENT NAVIGATION
-            ================================================== */}
+              {/* =================================================
+                  ANIMATED STEP CONTENT
+              ================================================== */}
 
-            {currentStep === 5 && (
-              <div className="mt-5">
-                <Button
-                  variant="secondary"
-                  onClick={handleBack}
-                  disabled={isConfirming}
+              <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+
+                <div
+                  key={currentStep}
+                  className="appointment-step-enter"
                 >
-                  ← Back
-                </Button>
+                  {renderStep()}
+                </div>
+
               </div>
-            )}
 
-            {/* =================================================
-                REVIEW NAVIGATION
-            ================================================== */}
 
-            {currentStep === 6 && (
-              <div className="mt-5 flex justify-between gap-3">
-                <Button
-                  variant="secondary"
-                  onClick={handleBack}
-                  disabled={isConfirming}
-                >
-                  ← Edit
-                </Button>
+              {/* =================================================
+                  STEPS 2–4 NAVIGATION
+              ================================================== */}
 
-                <Button
-                  onClick={handleConfirm}
-                  disabled={isConfirming}
-                >
-                  {isConfirming ? (
-                    <>
-                      <span
-                        className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"
-                        aria-hidden="true"
-                      />
+              {currentStep > 1 && currentStep < 5 && (
+                <div className="mt-5 flex justify-between">
 
-                      Confirming...
-                    </>
-                  ) : (
-                    "Confirm Appointment"
-                  )}
-                </Button>
-              </div>
-            )}
+                  <Button
+                    variant="secondary"
+                    onClick={handleBack}
+                    disabled={isConfirming}
+                  >
+                    ← Back
+                  </Button>
 
-            {/* =================================================
-                DOCTOR NAVIGATION
-            ================================================== */}
+                  <Button onClick={handleNext}>
+                    Continue →
+                  </Button>
 
-            {currentStep === 1 && selectedDoctor && (
-              <div className="mt-5 flex justify-end">
-                <Button onClick={handleNext}>
-                  Continue →
-                </Button>
-              </div>
-            )}
+                </div>
+              )}
 
-            {/* =================================================
-                CONFIRMATION
-            ================================================== */}
 
-            {currentStep === 7 && (
-              <div className="mt-5 text-center">
-                <p className="text-xs text-slate-400">
-                  Prototype only — no real appointment has been
-                  created.
-                </p>
-              </div>
-            )}
-          </div>
-        </Container>
-      </section>
-    </main>
+              {/* =================================================
+                  PATIENT NAVIGATION
+              ================================================== */}
+
+              {currentStep === 5 && (
+                <div className="mt-5">
+
+                  <Button
+                    variant="secondary"
+                    onClick={handleBack}
+                    disabled={isConfirming}
+                  >
+                    ← Back
+                  </Button>
+
+                </div>
+              )}
+
+
+              {/* =================================================
+                  REVIEW NAVIGATION
+              ================================================== */}
+
+              {currentStep === 6 && (
+                <div className="mt-5 flex justify-between gap-3">
+
+                  <Button
+                    variant="secondary"
+                    onClick={handleBack}
+                    disabled={isConfirming}
+                  >
+                    ← Edit
+                  </Button>
+
+                  <Button
+                    onClick={handleConfirm}
+                    disabled={isConfirming}
+                  >
+                    {isConfirming ? (
+                      <>
+                        <span
+                          className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"
+                          aria-hidden="true"
+                        />
+
+                        Confirming...
+                      </>
+                    ) : (
+                      "Confirm Appointment"
+                    )}
+                  </Button>
+
+                </div>
+              )}
+
+
+              {/* =================================================
+                  DOCTOR NAVIGATION
+              ================================================== */}
+
+              {currentStep === 1 && selectedDoctor && (
+                <div className="mt-5 flex justify-end">
+
+                  <Button onClick={handleNext}>
+                    Continue →
+                  </Button>
+
+                </div>
+              )}
+
+
+              {/* =================================================
+                  CONFIRMATION
+              ================================================== */}
+
+              {currentStep === 7 && (
+                <div className="mt-5 text-center">
+
+                  <p className="text-xs text-slate-400">
+                    Prototype only — no real appointment has been
+                    created.
+                  </p>
+
+                </div>
+              )}
+
+            </div>
+
+          </Container>
+        </section>
+
+      </main>
+    </>
   );
 }
 
