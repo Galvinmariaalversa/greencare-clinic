@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import ScrollToTop from "./components/layout/ScrollToTop";
 import PublicLayout from "./components/layout/PublicLayout";
+import ClinicSchema from "./components/seo/ClinicSchema";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -33,30 +35,60 @@ function RoutePlaceholder({ title }) {
   );
 }
 
+
 function App() {
   return (
     <BrowserRouter>
+
+      {/* Global clinic structured data */}
+      <ClinicSchema />
+
       {/* Reset scroll position whenever the route changes */}
       <ScrollToTop />
 
       <Routes>
+
         <Route element={<PublicLayout />}>
 
-          {/* Home */}
-          <Route path="/" element={<Home />} />
+          {/* =====================================================
+              HOME
+          ====================================================== */}
 
-          {/* About */}
-          <Route path="/about" element={<About />} />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-          {/* Doctors */}
-          <Route path="/doctors" element={<Doctors />} />
+
+          {/* =====================================================
+              ABOUT
+          ====================================================== */}
+
+          <Route
+            path="/about"
+            element={<About />}
+          />
+
+
+          {/* =====================================================
+              DOCTORS
+          ====================================================== */}
+
+          <Route
+            path="/doctors"
+            element={<Doctors />}
+          />
 
           <Route
             path="/doctors/:id"
             element={<DoctorDetails />}
           />
 
-          {/* Services */}
+
+          {/* =====================================================
+              SERVICES
+          ====================================================== */}
+
           <Route
             path="/services"
             element={<Services />}
@@ -67,49 +99,77 @@ function App() {
             element={<ServiceDetails />}
           />
 
-          {/* Contact */}
+
+          {/* =====================================================
+              CONTACT
+          ====================================================== */}
+
           <Route
             path="/contact"
             element={<Contact />}
           />
 
-          {/* Appointment */}
+
+          {/* =====================================================
+              APPOINTMENT
+          ====================================================== */}
+
           <Route
             path="/appointments"
             element={<Appointment />}
           />
 
-          {/* FAQ */}
+
+          {/* =====================================================
+              FAQ
+          ====================================================== */}
+
           <Route
             path="/faq"
             element={<FAQ />}
           />
 
-          {/* Legal */}
+
+          {/* =====================================================
+              LEGAL
+          ====================================================== */}
+
           <Route
             path="/privacy"
             element={
-              <RoutePlaceholder title="Privacy Policy" />
+              <RoutePlaceholder
+                title="Privacy Policy"
+              />
             }
           />
 
           <Route
             path="/terms"
             element={
-              <RoutePlaceholder title="Terms & Conditions" />
+              <RoutePlaceholder
+                title="Terms & Conditions"
+              />
             }
           />
 
-          {/* 404 */}
+
+          {/* =====================================================
+              404
+          ====================================================== */}
+
           <Route
             path="*"
             element={
-              <RoutePlaceholder title="Page Not Found" />
+              <RoutePlaceholder
+                title="Page Not Found"
+              />
             }
           />
 
         </Route>
+
       </Routes>
+
     </BrowserRouter>
   );
 }
