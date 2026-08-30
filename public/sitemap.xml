@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
+
+  <!-- Main Pages -->
+
   <url>
     <loc>https://greencare-clinic.vercel.app/</loc>
   </url>
@@ -29,4 +33,51 @@
   <url>
     <loc>https://greencare-clinic.vercel.app/appointments</loc>
   </url>
+
+
+  <!-- Doctor Details -->
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/doctors/dr-arun</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/doctors/dr-anita</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/doctors/dr-rahul</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/doctors/dr-priya</loc>
+  </url>
+
+
+  <!-- Service Details -->
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/general-medicine</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/family-medicine</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/preventive-care</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/health-screening</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/wellness-consultation</loc>
+  </url>
+
+  <url>
+    <loc>https://greencare-clinic.vercel.app/services/internal-medicine</loc>
+  </url>
+
 </urlset>
