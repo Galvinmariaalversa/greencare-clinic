@@ -95,96 +95,124 @@ function Home() {
     <main className="bg-white">
 
       {/* =====================================================
-          HERO
-      ====================================================== */}
+    HERO
+===================================================== */}
 
-      <section className="bg-[#edf7ff]">
-        <Container>
+<section className="overflow-hidden bg-[#edf7ff]">
+  <div className="grid min-h-[520px] lg:grid-cols-2">
 
-          <div className="grid min-h-[560px] items-center gap-8 py-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-0 lg:py-0">
+    {/* =================================================
+        LEFT CONTENT
+    ================================================== */}
 
-            {/* LEFT */}
+    <div className="flex items-center">
+      <div
+        className="
+          w-full
+          max-w-xl
+          px-4
+          py-14
+          sm:px-6
+          sm:py-16
+          lg:ml-auto
+          lg:px-10
+          lg:py-20
+          xl:px-12
+          2xl:px-16
+        "
+      >
 
-            <div className="relative z-10 max-w-[560px] py-8 lg:py-20">
+        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600 sm:text-xs">
+          Trusted Healthcare
+        </p>
 
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600 sm:text-xs">
-                Trusted Healthcare
-              </p>
+        <h1 className="mt-4 max-w-xl text-4xl font-bold leading-[1.05] tracking-tight text-[#102b4e] sm:text-5xl lg:text-[3.4rem] xl:text-6xl">
+          Expert care for
+          <br />
+          healthier lives.
+        </h1>
 
-              <h1 className="mt-4 max-w-[520px] text-[42px] font-bold leading-[1.08] tracking-tight text-[#102b4e] sm:text-5xl lg:text-[58px]">
-                Expert care for healthier lives.
-              </h1>
+        <p className="mt-5 max-w-lg text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+          GreenCare Clinic provides professional healthcare
+          services for individuals and families, with convenient
+          appointments and patient-focused care.
+        </p>
 
-              <p className="mt-5 max-w-[500px] text-sm leading-6 text-slate-600 sm:text-base">
-                GreenCare Clinic provides professional healthcare services
-                for individuals and families, with convenient appointments
-                and patient-focused care.
-              </p>
+        <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
 
-              <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <Button
+            to="/appointments"
+            size="md"
+            className="rounded-lg"
+          >
+            Book Appointment →
+          </Button>
 
-                <Button
-                  to="/appointments"
-                  size="md"
-                  className="rounded-full px-5"
-                >
-                  Book Appointment
+          <a
+            href={`tel:${clinic.phone.replace(/\s/g, "")}`}
+            className="group flex items-center gap-3"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sm text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
+              ☎
+            </span>
 
-                  <span className="ml-2 flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-                    →
-                  </span>
-                </Button>
+            <span>
+              <span className="block text-sm font-semibold text-slate-700">
+                {clinic.phone}
+              </span>
 
-                <a
-                  href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-3 rounded-full text-sm text-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-600 shadow-sm">
-                    ☎
-                  </span>
+              <span className="block text-xs text-slate-500">
+                Call us anytime
+              </span>
+            </span>
+          </a>
 
-                  <span>
-                    <span className="block font-semibold text-[#102b4e]">
-                      {clinic.contact.phone}
-                    </span>
+        </div>
 
-                    <span className="block text-xs text-slate-500">
-                      Call us anytime
-                    </span>
-                  </span>
-                </a>
-
-              </div>
-
-            </div>
-
-            {/* RIGHT IMAGE */}
-
-            <div className="relative h-full min-h-[430px] lg:min-h-[560px]">
-
-              <div className="absolute inset-y-0 right-[-32px] left-[-20px] overflow-hidden rounded-l-[50%] lg:right-[-80px]">
-
-                <img
-                  src={heroImage}
-                  alt="GreenCare Clinic healthcare environment"
-                  className="h-full w-full object-cover object-center"
-                  width="1200"
-                  height="800"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                />
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </Container>
-      </section>
+      </div>
+    </div>
 
 
+    {/* =================================================
+        RIGHT IMAGE
+    ================================================== */}
+
+    <div className="relative min-h-[400px] overflow-hidden lg:min-h-[520px]">
+
+      <img
+        src={heroImage}
+        alt="Healthcare professional consulting with a patient at GreenCare Clinic"
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          object-cover
+          object-center
+        "
+        fetchPriority="high"
+      />
+
+      {/* Soft fade between text and image */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-y-0
+          left-0
+          w-1/3
+          bg-gradient-to-r
+          from-[#edf7ff]
+          via-[#edf7ff]/70
+          to-transparent
+        "
+      />
+
+    </div>
+
+  </div>
+</section>
       {/* =====================================================
           WHAT WE DO
       ====================================================== */}
