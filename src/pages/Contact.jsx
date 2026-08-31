@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SEO from "../components/seo/SEO";
+import LocationMap from "../components/layout/LocationMap";
 
 import Container from "../components/layout/Container";
 import PageHeader from "../components/layout/PageHeader";
@@ -108,6 +109,7 @@ function Contact() {
         description="Contact GreenCare Clinic for clinic information, working hours, directions, general enquiries, and appointment information."
         canonical="https://greencare-clinic.vercel.app/contact"
       />
+
 
       <main className="bg-white">
 
@@ -665,96 +667,36 @@ function Contact() {
 
         <section className="bg-[#f8fbfe] py-14 sm:py-16 lg:py-20">
           <Container>
-
             <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
 
-              {/* Map placeholder */}
-
-              <div
-                className="relative min-h-[340px] overflow-hidden bg-[#dfeef8] sm:min-h-[420px]"
-                aria-label="Map placeholder for GreenCare Clinic location"
-              >
-
-                {/* Decorative map grid */}
-
-                <div
-                  className="absolute inset-0 opacity-40"
-                  aria-hidden="true"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(45deg, rgba(100,140,170,0.12) 25%, transparent 25%, transparent 75%, rgba(100,140,170,0.12) 75%), linear-gradient(45deg, rgba(100,140,170,0.12) 25%, transparent 25%, transparent 75%, rgba(100,140,170,0.12) 75%)",
-                    backgroundPosition: "0 0, 24px 24px",
-                    backgroundSize: "48px 48px",
-                  }}
-                />
-
-                {/* Roads */}
-
-                <div
-                  className="absolute left-[-10%] top-[48%] h-8 w-[120%] rotate-[-8deg] bg-white/70"
-                  aria-hidden="true"
-                />
-
-                <div
-                  className="absolute left-[48%] top-[-10%] h-[120%] w-7 rotate-[15deg] bg-white/60"
-                  aria-hidden="true"
-                />
-
-                {/* Location marker */}
-
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-2xl font-bold text-white shadow-xl ring-8 ring-white/60">
-                    ⌖
-                  </div>
-
-                </div>
-
-                {/* Map label */}
-
-                <div className="absolute bottom-5 left-5 max-w-[calc(100%-2.5rem)] rounded-2xl bg-white px-5 py-4 shadow-lg sm:bottom-7 sm:left-7">
-
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-blue-600">
-                    GreenCare Clinic
-                  </p>
-
-                  <p className="mt-1 text-sm font-semibold text-[#102b4e]">
-                    Location to be confirmed
-                  </p>
-
-                </div>
-
-              </div>
-
+              {/* Google Map */}
+              <LocationMap />
 
               {/* Directions */}
-
               <div className="flex flex-col gap-5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
 
                 <div>
-
                   <h2 className="text-xl font-bold text-[#102b4e]">
                     Need directions?
                   </h2>
 
                   <p className="mt-1 text-sm text-slate-500">
-                    A live map integration can be connected after the clinic
-                    address is finalized.
+                    Find GreenCare Clinic easily using Google Maps.
                   </p>
-
                 </div>
 
-                <a
-                  href="#clinic-location"
-                  className="inline-flex shrink-0 items-center justify-center rounded-full border border-blue-200 bg-[#edf7ff] px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-                >
-                  Get Directions →
-                </a>
+     <a
+  href="https://www.google.com/maps/dir/?api=1&destination=Radha+Nagar,+Lakshmi+Nagar,+Chromepet,+Chennai,+Tamil+Nadu+600044"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex shrink-0 items-center justify-center rounded-full border border-blue-200 bg-[#edf7ff] px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+>
+  Get Directions →
+</a>
 
               </div>
 
             </div>
-
           </Container>
         </section>
 
