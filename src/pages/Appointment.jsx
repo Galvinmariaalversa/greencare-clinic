@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import SEO from "../components/seo/SEO";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
@@ -364,25 +365,28 @@ function Appointment() {
         <section className="border-b border-slate-100 bg-white py-12 sm:py-16">
           <Container>
 
-            <div className="mx-auto max-w-3xl text-center">
+            <ScrollReveal>
+              <div className="mx-auto max-w-3xl text-center">
 
-              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600 sm:text-xs">
-                GreenCare Clinic
-              </p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600 sm:text-xs">
+                  GreenCare Clinic
+                </p>
 
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#102b4e] sm:text-4xl">
-                Book an Appointment
-              </h1>
+                <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#102b4e] sm:text-4xl">
+                  Book an Appointment
+                </h1>
 
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
-                Select your doctor, service, preferred time, and
-                patient information to continue.
-              </p>
+                <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
+                  Select your doctor, service, preferred time, and
+                  patient information to continue.
+                </p>
 
-            </div>
+              </div>
+            </ScrollReveal>
 
           </Container>
         </section>
+
 
 
         {/* =====================================================
@@ -397,23 +401,33 @@ function Appointment() {
               className="mx-auto max-w-5xl scroll-mt-24"
             >
 
-              <AppointmentStepper
-                currentStep={currentStep}
-                completedSteps={completedSteps}
-              />
+              {/* Stepper */}
+
+              <ScrollReveal>
+                <AppointmentStepper
+                  currentStep={currentStep}
+                  completedSteps={completedSteps}
+                />
+              </ScrollReveal>
+
 
 
               {/* Prototype notice */}
 
               {currentStep !== 7 && (
-                <div className="mb-6 flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
-                  <p className="text-xs leading-5 text-blue-800">
-                    <strong>Frontend prototype:</strong>{" "}
-                    appointment availability is mock data and is not
-                    permanently reserved.
-                  </p>
-                </div>
+                <ScrollReveal>
+                  <div className="mb-6 flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
+
+                    <p className="text-xs leading-5 text-blue-800">
+                      <strong>Frontend prototype:</strong>{" "}
+                      appointment availability is mock data and is not
+                      permanently reserved.
+                    </p>
+
+                  </div>
+                </ScrollReveal>
               )}
+
 
 
               {/* Workflow error */}
@@ -428,9 +442,19 @@ function Appointment() {
               )}
 
 
+
               {/* =================================================
-                  ANIMATED STEP CONTENT
+                  APPOINTMENT CONTENT
               ================================================== */}
+
+              {/* 
+                  IMPORTANT:
+                  Do NOT put ScrollReveal directly around this
+                  dynamic workflow.
+
+                  The appointment-step-enter animation already
+                  handles animation when currentStep changes.
+              */}
 
               <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
 
@@ -442,6 +466,7 @@ function Appointment() {
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -467,6 +492,7 @@ function Appointment() {
               )}
 
 
+
               {/* =================================================
                   PATIENT NAVIGATION
               ================================================== */}
@@ -484,6 +510,7 @@ function Appointment() {
 
                 </div>
               )}
+
 
 
               {/* =================================================
@@ -523,6 +550,7 @@ function Appointment() {
               )}
 
 
+
               {/* =================================================
                   DOCTOR NAVIGATION
               ================================================== */}
@@ -538,19 +566,22 @@ function Appointment() {
               )}
 
 
+
               {/* =================================================
                   CONFIRMATION
               ================================================== */}
 
               {currentStep === 7 && (
-                <div className="mt-5 text-center">
+                <ScrollReveal>
+                  <div className="mt-5 text-center">
 
-                  <p className="text-xs text-slate-400">
-                    Prototype only — no real appointment has been
-                    created.
-                  </p>
+                    <p className="text-xs text-slate-400">
+                      Prototype only — no real appointment has been
+                      created.
+                    </p>
 
-                </div>
+                  </div>
+                </ScrollReveal>
               )}
 
             </div>

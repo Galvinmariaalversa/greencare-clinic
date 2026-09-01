@@ -55,7 +55,7 @@ const services = [
       "Please bring relevant health records and current medication information where applicable.",
     icon: "♡",
     image:
-      "https://images.unsplash.com/photo-1638202993928-7d113b8e7f12?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=85",
     category: "Primary Care",
     doctorIds: ["dr-anita"],
     faqs: [

@@ -3,8 +3,8 @@ import SEO from "../components/seo/SEO";
 import LocationMap from "../components/layout/LocationMap";
 
 import Container from "../components/layout/Container";
-import PageHeader from "../components/layout/PageHeader";
 import Button from "../components/ui/Button";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 import clinic from "../data/clinic";
 
@@ -110,18 +110,208 @@ function Contact() {
         canonical="https://greencare-clinic.vercel.app/contact"
       />
 
-
       <main className="bg-white">
 
         {/* =====================================================
-            1. PAGE HERO
+            1. CONTACT HERO
         ====================================================== */}
 
-        <PageHeader
-          eyebrow="CONTACT GREencare"
-          title="We're here to help."
-          description="Have a question about our clinic or services? Get in touch with the GreenCare team."
-        />
+        <section className="relative overflow-hidden bg-[#edf7ff]">
+
+          {/* Decorative background elements */}
+
+          <div
+            aria-hidden="true"
+            className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-100/70 blur-3xl"
+          />
+
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-blue-50 blur-3xl"
+          />
+
+          <Container>
+
+            <div className="relative py-16 sm:py-20 lg:py-24">
+
+              {/* Eyebrow */}
+
+              <ScrollReveal>
+
+                <div className="flex items-center gap-3">
+
+                  <span className="h-[2px] w-10 bg-blue-600" />
+
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-600 sm:text-xs">
+                    Contact GreenCare
+                  </p>
+
+                </div>
+
+              </ScrollReveal>
+
+
+              <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+
+                {/* =====================================================
+                    MAIN CONTENT
+                ====================================================== */}
+
+                <ScrollReveal direction="right">
+
+                  <div className="max-w-3xl">
+
+                    <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-[#102b4e] sm:text-5xl lg:text-6xl">
+
+                      We're here to help you
+
+                      <span className="block text-blue-600">
+                        take the next step.
+                      </span>
+
+                    </h1>
+
+
+                    <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+
+                      Have a question about our clinic, healthcare services,
+                      or your appointment? Our GreenCare team is ready to
+                      provide the information and support you need.
+
+                    </p>
+
+
+                    {/* CTA BUTTONS */}
+
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                      <a
+                        href="#contact-form"
+                        className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                      >
+                        Send a Message
+
+                        <span className="ml-2 text-lg">
+                          →
+                        </span>
+
+                      </a>
+
+
+                      <a
+                        href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
+                        className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-6 py-3.5 text-sm font-semibold text-[#102b4e] transition hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                      >
+                        Call the Clinic
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                </ScrollReveal>
+
+
+                {/* =====================================================
+                    CONTACT INFORMATION CARD
+                ====================================================== */}
+
+                <ScrollReveal
+                  delay={0.15}
+                  direction="left"
+                >
+
+                  <div className="rounded-[2rem] border border-blue-100 bg-white/80 p-6 shadow-sm backdrop-blur sm:p-7">
+
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-2xl text-white">
+                      ☎
+                    </div>
+
+
+                    <h2 className="mt-5 text-xl font-bold text-[#102b4e]">
+                      Get in touch with us
+                    </h2>
+
+
+                    <p className="mt-3 text-sm leading-6 text-slate-500">
+
+                      Contact GreenCare Clinic for general enquiries,
+                      clinic information, appointment guidance,
+                      and healthcare services.
+
+                    </p>
+
+
+                    {/* Contact details */}
+
+                    <div className="mt-6 space-y-4 border-t border-slate-100 pt-5">
+
+                      {/* Phone */}
+
+                      <a
+                        href={`tel:${clinic.contact.phone.replace(/\s/g, "")}`}
+                        className="group flex items-center gap-3"
+                      >
+
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#edf7ff] text-sm font-bold text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                          ☎
+                        </span>
+
+
+                        <div>
+
+                          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                            Phone
+                          </p>
+
+                          <p className="mt-1 text-sm font-semibold text-[#102b4e]">
+                            {clinic.contact.phone}
+                          </p>
+
+                        </div>
+
+                      </a>
+
+
+                      {/* Email */}
+
+                      <a
+                        href={`mailto:${clinic.contact.email}`}
+                        className="group flex items-center gap-3"
+                      >
+
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#edf7ff] text-sm font-bold text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                          @
+                        </span>
+
+
+                        <div>
+
+                          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                            Email
+                          </p>
+
+                          <p className="mt-1 break-all text-sm font-semibold text-[#102b4e]">
+                            {clinic.contact.email}
+                          </p>
+
+                        </div>
+
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                </ScrollReveal>
+
+              </div>
+
+            </div>
+
+          </Container>
+
+        </section>
 
 
         {/* =====================================================
@@ -129,90 +319,114 @@ function Contact() {
         ====================================================== */}
 
         <section className="py-14 sm:py-16 lg:py-20">
+
           <Container>
 
             <div className="grid gap-6 md:grid-cols-3">
 
               {/* Phone */}
 
-              <a
-                href={`tel:${clinic.contact.phone.replace(
-                  /\s/g,
-                  ""
-                )}`}
-                className="group rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
-                  ☎
-                </span>
+              <ScrollReveal delay={0}>
 
-                <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Phone
-                </p>
+                <a
+                  href={`tel:${clinic.contact.phone.replace(
+                    /\s/g,
+                    ""
+                  )}`}
+                  className="group block rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                >
 
-                <h2 className="mt-2 text-lg font-bold text-[#102b4e]">
-                  {clinic.contact.phone}
-                </h2>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
+                    ☎
+                  </span>
 
-                <p className="mt-2 text-sm text-slate-500">
-                  Call the clinic
-                </p>
-              </a>
+                  <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                    Phone
+                  </p>
+
+                  <h2 className="mt-2 text-lg font-bold text-[#102b4e]">
+                    {clinic.contact.phone}
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-500">
+                    Call the clinic
+                  </p>
+
+                </a>
+
+              </ScrollReveal>
 
 
               {/* Email */}
 
-              <a
-                href={`mailto:${clinic.contact.email}`}
-                className="group rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
-                  @
-                </span>
+              <ScrollReveal delay={0.1}>
 
-                <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Email
-                </p>
+                <a
+                  href={`mailto:${clinic.contact.email}`}
+                  className="group block rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                >
 
-                <h2 className="mt-2 break-all text-lg font-bold text-[#102b4e]">
-                  {clinic.contact.email}
-                </h2>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
+                    @
+                  </span>
 
-                <p className="mt-2 text-sm text-slate-500">
-                  Send us an email
-                </p>
-              </a>
+                  <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                    Email
+                  </p>
+
+                  <h2 className="mt-2 break-all text-lg font-bold text-[#102b4e]">
+                    {clinic.contact.email}
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-500">
+                    Send us an email
+                  </p>
+
+                </a>
+
+              </ScrollReveal>
 
 
               {/* Address */}
 
-              <div className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm">
+              <ScrollReveal delay={0.2}>
 
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
-                  ⌖
-                </span>
+                <div className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-sm">
 
-                <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Visit Us
-                </p>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#edf7ff] text-lg font-bold text-blue-600">
+                    ⌖
+                  </span>
 
-                <h2 className="mt-2 text-lg font-bold text-[#102b4e]">
-                  {clinic.contact.address.line1}
-                </h2>
+                  <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                    Visit Us
+                  </p>
 
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  {clinic.contact.address.line2}
-                  <br />
-                  {clinic.contact.address.city},{" "}
-                  {clinic.contact.address.state}{" "}
-                  {clinic.contact.address.postalCode}
-                </p>
+                  <h2 className="mt-2 text-lg font-bold text-[#102b4e]">
+                    {clinic.contact.address.line1}
+                  </h2>
 
-              </div>
+                  <p className="mt-2 text-sm leading-6 text-slate-500">
+
+                    {clinic.contact.address.line2}
+
+                    <br />
+
+                    {clinic.contact.address.city},{" "}
+
+                    {clinic.contact.address.state}{" "}
+
+                    {clinic.contact.address.postalCode}
+
+                  </p>
+
+                </div>
+
+              </ScrollReveal>
 
             </div>
 
           </Container>
+
         </section>
 
 
@@ -220,382 +434,463 @@ function Contact() {
             3. CONTACT FORM
         ====================================================== */}
 
-        <section className="bg-[#f8fbfe] py-14 sm:py-16 lg:py-20">
+        <section
+          id="contact-form"
+          className="scroll-mt-24 bg-[#f8fbfe] py-14 sm:py-16 lg:py-20"
+        >
+
           <Container>
 
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
 
               {/* Intro */}
 
-              <div className="max-w-md">
+              <ScrollReveal direction="right">
 
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Send a Message
-                </p>
+                <div className="max-w-md">
 
-                <h2 className="mt-3 text-3xl font-bold leading-tight text-[#102b4e] sm:text-4xl">
-                  How can we help?
-                </h2>
-
-                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
-                  Complete the form and provide a few details about
-                  your enquiry. This frontend form currently demonstrates
-                  the validation and submission experience only.
-                </p>
-
-                <div className="mt-7 rounded-2xl bg-[#edf7ff] p-5">
-                  <p className="text-sm font-semibold text-[#102b4e]">
-                    Frontend demonstration
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                    Send a Message
                   </p>
 
-                  <p className="mt-2 text-xs leading-5 text-slate-500">
-                    Submitting this form does not send an email or create
-                    a backend request. A real submission service can be
-                    connected in a future backend phase.
+                  <h2 className="mt-3 text-3xl font-bold leading-tight text-[#102b4e] sm:text-4xl">
+                    How can we help?
+                  </h2>
+
+                  <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+
+                    Complete the form and provide a few details about
+                    your enquiry. This frontend form currently demonstrates
+                    the validation and submission experience only.
+
                   </p>
+
+
+                  <div className="mt-7 rounded-2xl bg-[#edf7ff] p-5">
+
+                    <p className="text-sm font-semibold text-[#102b4e]">
+                      Frontend demonstration
+                    </p>
+
+                    <p className="mt-2 text-xs leading-5 text-slate-500">
+
+                      Submitting this form does not send an email or create
+                      a backend request. A real submission service can be
+                      connected in a future backend phase.
+
+                    </p>
+
+                  </div>
+
                 </div>
 
-              </div>
+              </ScrollReveal>
 
 
               {/* Form */}
 
-              <div className="rounded-[2rem] bg-white p-6 shadow-sm sm:p-8">
+              <ScrollReveal
+                delay={0.15}
+                direction="left"
+              >
 
-                {status === "success" && (
-                  <div
-                    role="status"
-                    className="mb-6 rounded-2xl border border-emerald-100 bg-emerald-50 p-4"
-                  >
-                    <p className="text-sm font-bold text-emerald-800">
-                      Message ready for submission
-                    </p>
+                <div className="rounded-[2rem] bg-white p-6 shadow-sm sm:p-8">
 
-                    <p className="mt-1 text-xs leading-5 text-emerald-700">
-                      Your form was validated successfully. No email was sent
-                      because this is currently a frontend-only form.
-                    </p>
-                  </div>
-                )}
+                  {status === "success" && (
 
-
-                {status === "validation-error" && (
-                  <div
-                    role="alert"
-                    className="mb-6 rounded-2xl border border-red-100 bg-red-50 p-4"
-                  >
-                    <p className="text-sm font-bold text-red-800">
-                      Please check the highlighted fields.
-                    </p>
-
-                    <p className="mt-1 text-xs text-red-700">
-                      Correct the validation errors before submitting again.
-                    </p>
-                  </div>
-                )}
-
-
-                {status === "error" && (
-                  <div
-                    role="alert"
-                    className="mb-6 rounded-2xl border border-red-100 bg-red-50 p-4"
-                  >
-                    <p className="text-sm font-bold text-red-800">
-                      Something went wrong.
-                    </p>
-
-                    <p className="mt-1 text-xs text-red-700">
-                      Please try again.
-                    </p>
-
-                    <button
-                      type="button"
-                      onClick={handleRetry}
-                      className="mt-3 text-xs font-bold text-red-700 underline underline-offset-2"
+                    <div
+                      role="status"
+                      className="mb-6 rounded-2xl border border-emerald-100 bg-emerald-50 p-4"
                     >
-                      Try Again
-                    </button>
-                  </div>
-                )}
 
-
-                <form
-                  onSubmit={handleSubmit}
-                  noValidate
-                  className="space-y-5"
-                >
-
-                  {/* Name + Email */}
-
-                  <div className="grid gap-5 sm:grid-cols-2">
-
-                    <div>
-                      <label
-                        htmlFor="contact-name"
-                        className="mb-2 block text-xs font-bold text-[#102b4e]"
-                      >
-                        Full Name
-                        <span
-                          className="ml-1 text-red-500"
-                          aria-hidden="true"
-                        >
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        value={form.name}
-                        onChange={handleChange}
-                        autoComplete="name"
-                        aria-invalid={Boolean(errors.name)}
-                        aria-describedby={
-                          errors.name
-                            ? "contact-name-error"
-                            : undefined
-                        }
-                        className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
-                          errors.name
-                            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
-                            : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
-                        }`}
-                        placeholder="Your full name"
-                      />
-
-                      {errors.name && (
-                        <p
-                          id="contact-name-error"
-                          className="mt-1.5 text-xs text-red-600"
-                        >
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-
-                    <div>
-                      <label
-                        htmlFor="contact-email"
-                        className="mb-2 block text-xs font-bold text-[#102b4e]"
-                      >
-                        Email
-                        <span
-                          className="ml-1 text-red-500"
-                          aria-hidden="true"
-                        >
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        autoComplete="email"
-                        aria-invalid={Boolean(errors.email)}
-                        aria-describedby={
-                          errors.email
-                            ? "contact-email-error"
-                            : undefined
-                        }
-                        className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
-                          errors.email
-                            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
-                            : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
-                        }`}
-                        placeholder="you@example.com"
-                      />
-
-                      {errors.email && (
-                        <p
-                          id="contact-email-error"
-                          className="mt-1.5 text-xs text-red-600"
-                        >
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                  </div>
-
-
-                  {/* Phone + Subject */}
-
-                  <div className="grid gap-5 sm:grid-cols-2">
-
-                    <div>
-                      <label
-                        htmlFor="contact-phone"
-                        className="mb-2 block text-xs font-bold text-[#102b4e]"
-                      >
-                        Phone
-                        <span
-                          className="ml-1 text-red-500"
-                          aria-hidden="true"
-                        >
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        id="contact-phone"
-                        name="phone"
-                        type="tel"
-                        value={form.phone}
-                        onChange={handleChange}
-                        autoComplete="tel"
-                        aria-invalid={Boolean(errors.phone)}
-                        aria-describedby={
-                          errors.phone
-                            ? "contact-phone-error"
-                            : undefined
-                        }
-                        className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
-                          errors.phone
-                            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
-                            : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
-                        }`}
-                        placeholder="+91 XXXXX XXXXX"
-                      />
-
-                      {errors.phone && (
-                        <p
-                          id="contact-phone-error"
-                          className="mt-1.5 text-xs text-red-600"
-                        >
-                          {errors.phone}
-                        </p>
-                      )}
-                    </div>
-
-
-                    <div>
-                      <label
-                        htmlFor="contact-subject"
-                        className="mb-2 block text-xs font-bold text-[#102b4e]"
-                      >
-                        Subject
-                        <span
-                          className="ml-1 text-red-500"
-                          aria-hidden="true"
-                        >
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        id="contact-subject"
-                        name="subject"
-                        type="text"
-                        value={form.subject}
-                        onChange={handleChange}
-                        aria-invalid={Boolean(errors.subject)}
-                        aria-describedby={
-                          errors.subject
-                            ? "contact-subject-error"
-                            : undefined
-                        }
-                        className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
-                          errors.subject
-                            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
-                            : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
-                        }`}
-                        placeholder="How can we help?"
-                      />
-
-                      {errors.subject && (
-                        <p
-                          id="contact-subject-error"
-                          className="mt-1.5 text-xs text-red-600"
-                        >
-                          {errors.subject}
-                        </p>
-                      )}
-                    </div>
-
-                  </div>
-
-
-                  {/* Message */}
-
-                  <div>
-                    <label
-                      htmlFor="contact-message"
-                      className="mb-2 block text-xs font-bold text-[#102b4e]"
-                    >
-                      Message
-                      <span
-                        className="ml-1 text-red-500"
-                        aria-hidden="true"
-                      >
-                        *
-                      </span>
-                    </label>
-
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      rows="6"
-                      minLength="10"
-                      aria-invalid={Boolean(errors.message)}
-                      aria-describedby={
-                        errors.message
-                          ? "contact-message-error"
-                          : "contact-message-hint"
-                      }
-                      className={`w-full resize-y rounded-xl border bg-white px-4 py-3 text-sm leading-6 text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
-                        errors.message
-                          ? "border-red-400 focus:border-red-500 focus:ring-red-100"
-                          : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
-                      }`}
-                      placeholder="Tell us how we can help..."
-                    />
-
-                    {errors.message ? (
-                      <p
-                        id="contact-message-error"
-                        className="mt-1.5 text-xs text-red-600"
-                      >
-                        {errors.message}
+                      <p className="text-sm font-bold text-emerald-800">
+                        Message ready for submission
                       </p>
-                    ) : (
-                      <p
-                        id="contact-message-hint"
-                        className="mt-1.5 text-xs text-slate-400"
-                      >
-                        Minimum 10 characters.
+
+                      <p className="mt-1 text-xs leading-5 text-emerald-700">
+
+                        Your form was validated successfully. No email was sent
+                        because this is currently a frontend-only form.
+
                       </p>
-                    )}
-                  </div>
+
+                    </div>
+
+                  )}
 
 
-                  {/* Submit */}
+                  {status === "validation-error" && (
 
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={status === "submitting"}
-                      className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                    <div
+                      role="alert"
+                      className="mb-6 rounded-2xl border border-red-100 bg-red-50 p-4"
                     >
-                      {status === "submitting"
-                        ? "Submitting..."
-                        : "Send Message →"}
-                    </button>
-                  </div>
 
-                </form>
+                      <p className="text-sm font-bold text-red-800">
+                        Please check the highlighted fields.
+                      </p>
 
-              </div>
+                      <p className="mt-1 text-xs text-red-700">
+                        Correct the validation errors before submitting again.
+                      </p>
+
+                    </div>
+
+                  )}
+
+
+                  {status === "error" && (
+
+                    <div
+                      role="alert"
+                      className="mb-6 rounded-2xl border border-red-100 bg-red-50 p-4"
+                    >
+
+                      <p className="text-sm font-bold text-red-800">
+                        Something went wrong.
+                      </p>
+
+                      <p className="mt-1 text-xs text-red-700">
+                        Please try again.
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={handleRetry}
+                        className="mt-3 text-xs font-bold text-red-700 underline underline-offset-2"
+                      >
+                        Try Again
+                      </button>
+
+                    </div>
+
+                  )}
+
+
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="space-y-5"
+                  >
+
+                    {/* Name + Email */}
+
+                    <div className="grid gap-5 sm:grid-cols-2">
+
+                      <div>
+
+                        <label
+                          htmlFor="contact-name"
+                          className="mb-2 block text-xs font-bold text-[#102b4e]"
+                        >
+                          Full Name
+
+                          <span
+                            className="ml-1 text-red-500"
+                            aria-hidden="true"
+                          >
+                            *
+                          </span>
+
+                        </label>
+
+
+                        <input
+                          id="contact-name"
+                          name="name"
+                          type="text"
+                          value={form.name}
+                          onChange={handleChange}
+                          autoComplete="name"
+                          aria-invalid={Boolean(errors.name)}
+                          aria-describedby={
+                            errors.name
+                              ? "contact-name-error"
+                              : undefined
+                          }
+                          className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
+                            errors.name
+                              ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+                              : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
+                          }`}
+                          placeholder="Your full name"
+                        />
+
+
+                        {errors.name && (
+
+                          <p
+                            id="contact-name-error"
+                            className="mt-1.5 text-xs text-red-600"
+                          >
+                            {errors.name}
+                          </p>
+
+                        )}
+
+                      </div>
+
+
+                      <div>
+
+                        <label
+                          htmlFor="contact-email"
+                          className="mb-2 block text-xs font-bold text-[#102b4e]"
+                        >
+                          Email
+
+                          <span
+                            className="ml-1 text-red-500"
+                            aria-hidden="true"
+                          >
+                            *
+                          </span>
+
+                        </label>
+
+
+                        <input
+                          id="contact-email"
+                          name="email"
+                          type="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          autoComplete="email"
+                          aria-invalid={Boolean(errors.email)}
+                          aria-describedby={
+                            errors.email
+                              ? "contact-email-error"
+                              : undefined
+                          }
+                          className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
+                            errors.email
+                              ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+                              : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
+                          }`}
+                          placeholder="you@example.com"
+                        />
+
+
+                        {errors.email && (
+
+                          <p
+                            id="contact-email-error"
+                            className="mt-1.5 text-xs text-red-600"
+                          >
+                            {errors.email}
+                          </p>
+
+                        )}
+
+                      </div>
+
+                    </div>
+
+
+                    {/* Phone + Subject */}
+
+                    <div className="grid gap-5 sm:grid-cols-2">
+
+                      <div>
+
+                        <label
+                          htmlFor="contact-phone"
+                          className="mb-2 block text-xs font-bold text-[#102b4e]"
+                        >
+                          Phone
+
+                          <span
+                            className="ml-1 text-red-500"
+                            aria-hidden="true"
+                          >
+                            *
+                          </span>
+
+                        </label>
+
+
+                        <input
+                          id="contact-phone"
+                          name="phone"
+                          type="tel"
+                          value={form.phone}
+                          onChange={handleChange}
+                          autoComplete="tel"
+                          aria-invalid={Boolean(errors.phone)}
+                          aria-describedby={
+                            errors.phone
+                              ? "contact-phone-error"
+                              : undefined
+                          }
+                          className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
+                            errors.phone
+                              ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+                              : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
+                          }`}
+                          placeholder="+91 XXXXX XXXXX"
+                        />
+
+
+                        {errors.phone && (
+
+                          <p
+                            id="contact-phone-error"
+                            className="mt-1.5 text-xs text-red-600"
+                          >
+                            {errors.phone}
+                          </p>
+
+                        )}
+
+                      </div>
+
+
+                      <div>
+
+                        <label
+                          htmlFor="contact-subject"
+                          className="mb-2 block text-xs font-bold text-[#102b4e]"
+                        >
+                          Subject
+
+                          <span
+                            className="ml-1 text-red-500"
+                            aria-hidden="true"
+                          >
+                            *
+                          </span>
+
+                        </label>
+
+
+                        <input
+                          id="contact-subject"
+                          name="subject"
+                          type="text"
+                          value={form.subject}
+                          onChange={handleChange}
+                          aria-invalid={Boolean(errors.subject)}
+                          aria-describedby={
+                            errors.subject
+                              ? "contact-subject-error"
+                              : undefined
+                          }
+                          className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
+                            errors.subject
+                              ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+                              : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
+                          }`}
+                          placeholder="How can we help?"
+                        />
+
+
+                        {errors.subject && (
+
+                          <p
+                            id="contact-subject-error"
+                            className="mt-1.5 text-xs text-red-600"
+                          >
+                            {errors.subject}
+                          </p>
+
+                        )}
+
+                      </div>
+
+                    </div>
+
+
+                    {/* Message */}
+
+                    <div>
+
+                      <label
+                        htmlFor="contact-message"
+                        className="mb-2 block text-xs font-bold text-[#102b4e]"
+                      >
+                        Message
+
+                        <span
+                          className="ml-1 text-red-500"
+                          aria-hidden="true"
+                        >
+                          *
+                        </span>
+
+                      </label>
+
+
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        rows="6"
+                        minLength="10"
+                        aria-invalid={Boolean(errors.message)}
+                        aria-describedby={
+                          errors.message
+                            ? "contact-message-error"
+                            : "contact-message-hint"
+                        }
+                        className={`w-full resize-y rounded-xl border bg-white px-4 py-3 text-sm leading-6 text-slate-700 outline-none transition placeholder:text-slate-400 focus:ring-2 ${
+                          errors.message
+                            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+                            : "border-slate-200 focus:border-blue-500 focus:ring-blue-100"
+                        }`}
+                        placeholder="Tell us how we can help..."
+                      />
+
+
+                      {errors.message ? (
+
+                        <p
+                          id="contact-message-error"
+                          className="mt-1.5 text-xs text-red-600"
+                        >
+                          {errors.message}
+                        </p>
+
+                      ) : (
+
+                        <p
+                          id="contact-message-hint"
+                          className="mt-1.5 text-xs text-slate-400"
+                        >
+                          Minimum 10 characters.
+                        </p>
+
+                      )}
+
+                    </div>
+
+
+                    {/* Submit */}
+
+                    <div className="pt-2">
+
+                      <button
+                        type="submit"
+                        disabled={status === "submitting"}
+                        className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                      >
+                        {status === "submitting"
+                          ? "Submitting..."
+                          : "Send Message →"}
+                      </button>
+
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </ScrollReveal>
 
             </div>
 
           </Container>
+
         </section>
 
 
@@ -604,60 +899,80 @@ function Contact() {
         ====================================================== */}
 
         <section className="bg-white py-14 sm:py-16 lg:py-20">
+
           <Container>
 
             <div className="grid gap-10 lg:grid-cols-2">
 
-              <div>
+              <ScrollReveal direction="right">
 
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Visit Us
-                </p>
+                <div>
 
-                <h2 className="mt-3 text-3xl font-bold text-[#102b4e] sm:text-4xl">
-                  Working hours
-                </h2>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                    Visit Us
+                  </p>
 
-                <p className="mt-4 max-w-lg text-sm leading-7 text-slate-600 sm:text-base">
-                  Our current working-hour information is shown below.
-                  Please confirm availability when scheduling an appointment.
-                </p>
+                  <h2 className="mt-3 text-3xl font-bold text-[#102b4e] sm:text-4xl">
+                    Working hours
+                  </h2>
 
-              </div>
+                  <p className="mt-4 max-w-lg text-sm leading-7 text-slate-600 sm:text-base">
 
+                    Our current working-hour information is shown below.
+                    Please confirm availability when scheduling an appointment.
 
-              <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-
-                <div className="space-y-3">
-
-                  {clinic.workingHours.map((item) => (
-                    <div
-                      key={item.day}
-                      className="flex items-center justify-between gap-5 border-b border-slate-100 pb-3 last:border-0 last:pb-0"
-                    >
-                      <span className="text-sm font-semibold text-[#102b4e]">
-                        {item.day}
-                      </span>
-
-                      <span
-                        className={`text-right text-sm ${
-                          item.hours === "Closed"
-                            ? "font-semibold text-slate-400"
-                            : "text-slate-600"
-                        }`}
-                      >
-                        {item.hours}
-                      </span>
-                    </div>
-                  ))}
+                  </p>
 
                 </div>
 
-              </div>
+              </ScrollReveal>
+
+
+              <ScrollReveal
+                delay={0.15}
+                direction="left"
+              >
+
+                <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
+
+                  <div className="space-y-3">
+
+                    {clinic.workingHours.map((item) => (
+
+                      <div
+                        key={item.day}
+                        className="flex items-center justify-between gap-5 border-b border-slate-100 pb-3 last:border-0 last:pb-0"
+                      >
+
+                        <span className="text-sm font-semibold text-[#102b4e]">
+                          {item.day}
+                        </span>
+
+
+                        <span
+                          className={`text-right text-sm ${
+                            item.hours === "Closed"
+                              ? "font-semibold text-slate-400"
+                              : "text-slate-600"
+                          }`}
+                        >
+                          {item.hours}
+                        </span>
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                </div>
+
+              </ScrollReveal>
 
             </div>
 
           </Container>
+
         </section>
 
 
@@ -666,38 +981,52 @@ function Contact() {
         ====================================================== */}
 
         <section className="bg-[#f8fbfe] py-14 sm:py-16 lg:py-20">
+
           <Container>
-            <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
 
-              {/* Google Map */}
-              <LocationMap />
+            <ScrollReveal>
 
-              {/* Directions */}
-              <div className="flex flex-col gap-5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
 
-                <div>
-                  <h2 className="text-xl font-bold text-[#102b4e]">
-                    Need directions?
-                  </h2>
+                {/* Google Map */}
 
-                  <p className="mt-1 text-sm text-slate-500">
-                    Find GreenCare Clinic easily using Google Maps.
-                  </p>
+                <LocationMap />
+
+
+                {/* Directions */}
+
+                <div className="flex flex-col gap-5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+
+                  <div>
+
+                    <h2 className="text-xl font-bold text-[#102b4e]">
+                      Need directions?
+                    </h2>
+
+                    <p className="mt-1 text-sm text-slate-500">
+                      Find GreenCare Clinic easily using Google Maps.
+                    </p>
+
+                  </div>
+
+
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Radha+Nagar,+Lakshmi+Nagar,+Chromepet,+Chennai,+Tamil+Nadu+600044"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center rounded-full border border-blue-200 bg-[#edf7ff] px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                  >
+                    Get Directions →
+                  </a>
+
                 </div>
-
-     <a
-  href="https://www.google.com/maps/dir/?api=1&destination=Radha+Nagar,+Lakshmi+Nagar,+Chromepet,+Chennai,+Tamil+Nadu+600044"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex shrink-0 items-center justify-center rounded-full border border-blue-200 bg-[#edf7ff] px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
->
-  Get Directions →
-</a>
 
               </div>
 
-            </div>
+            </ScrollReveal>
+
           </Container>
+
         </section>
 
 
@@ -706,38 +1035,45 @@ function Contact() {
         ====================================================== */}
 
         <section className="bg-white py-14 sm:py-16">
+
           <Container>
 
-            <div className="flex flex-col gap-6 rounded-[2rem] bg-blue-600 px-6 py-9 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-12">
+            <ScrollReveal>
 
-              <div className="max-w-2xl">
+              <div className="flex flex-col gap-6 rounded-[2rem] bg-blue-600 px-6 py-9 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-12">
 
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-100">
-                  GreenCare Clinic
-                </p>
+                <div className="max-w-2xl">
 
-                <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
-                  Ready to plan your visit?
-                </h2>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-100">
+                    GreenCare Clinic
+                  </p>
 
-                <p className="mt-3 text-sm leading-6 text-blue-100">
-                  Choose a convenient time for your healthcare appointment.
-                </p>
+                  <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+                    Ready to plan your visit?
+                  </h2>
+
+                  <p className="mt-3 text-sm leading-6 text-blue-100">
+                    Choose a convenient time for your healthcare appointment.
+                  </p>
+
+                </div>
+
+
+                <Button
+                  to="/appointments"
+                  variant="secondary"
+                  size="md"
+                  className="shrink-0 rounded-full border-white bg-white text-blue-700 hover:bg-blue-50"
+                >
+                  Book Appointment →
+                </Button>
 
               </div>
 
-              <Button
-                to="/appointments"
-                variant="secondary"
-                size="md"
-                className="shrink-0 rounded-full border-white bg-white text-blue-700 hover:bg-blue-50"
-              >
-                Book Appointment →
-              </Button>
-
-            </div>
+            </ScrollReveal>
 
           </Container>
+
         </section>
 
       </main>
