@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo-removebg-preview.webp";
 
 const navigationItems = [
   { label: "Home", to: "/" },
@@ -30,44 +31,39 @@ function Navbar() {
             to="/"
             onClick={closeMobileMenu}
             className="
-              group flex items-center gap-2.5 rounded-lg
+              group flex items-center rounded-lg
               focus-visible:outline-2
               focus-visible:outline-offset-4
               focus-visible:outline-blue-600
             "
             aria-label="GreenCare Clinic home"
           >
-            {/* Logo mark */}
-            <span
-              className="
-                relative flex h-10 w-10 shrink-0
-                items-center justify-center rounded-full
-                bg-[#edf7ff]
-                transition-transform duration-200
-                ease-out
-                group-hover:scale-105
-                motion-reduce:transition-none
-                motion-reduce:group-hover:scale-100
-                sm:h-11 sm:w-11
-              "
-              aria-hidden="true"
-            >
-              <span className="absolute h-7 w-7 rounded-full border-[2.5px] border-blue-600" />
-              <span className="absolute h-3 w-3 rounded-full bg-blue-600" />
-              <span className="absolute h-1.5 w-1.5 rounded-full bg-white" />
-            </span>
+            <img
+  src={logo}
+  alt="GreenCare Clinic"
+  className="
+    h-[60px] w-auto
+    max-w-[220px]
+    object-contain
+    scale-125
+    origin-left
+    transition-transform duration-200
+    ease-out
+    group-hover:scale-[1.3]
+    motion-reduce:transition-none
+    motion-reduce:group-hover:scale-125
 
-            {/* Brand */}
-            <span className="flex flex-col">
-              <span className="text-[17px] font-bold leading-none tracking-[-0.02em] text-[#102b4e] sm:text-[18px]">
-                GreenCare
-              </span>
-
-              <span className="mt-1 text-[7px] font-semibold uppercase tracking-[0.2em] text-slate-400 sm:text-[8px]">
-                Healthcare Clinic
-              </span>
-            </span>
+    sm:h-[64px]
+    lg:h-[70px]
+  "
+/>
           </Link>
+
+
+
+
+
+
 
           {/* =====================================================
               DESKTOP NAVIGATION
@@ -210,7 +206,6 @@ function Navbar() {
               className="relative flex h-5 w-5 flex-col items-center justify-center"
               aria-hidden="true"
             >
-              {/* Top line */}
               <span
                 className={`
                   absolute h-[1.5px] w-5 rounded-full bg-current
@@ -224,7 +219,6 @@ function Navbar() {
                 `}
               />
 
-              {/* Middle line */}
               <span
                 className={`
                   absolute h-[1.5px] w-5 rounded-full bg-current
@@ -238,7 +232,6 @@ function Navbar() {
                 `}
               />
 
-              {/* Bottom line */}
               <span
                 className={`
                   absolute h-[1.5px] w-5 rounded-full bg-current
@@ -320,8 +313,6 @@ function Navbar() {
                 {({ isActive }) => (
                   <>
                     <span className="flex items-center gap-3">
-
-                      {/* Active indicator */}
                       <span
                         className={`
                           h-1.5 w-1.5 rounded-full
