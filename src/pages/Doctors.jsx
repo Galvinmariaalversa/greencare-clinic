@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import SEO from "../components/seo/SEO";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
-import doctorsHero from "../assets/doctors-hero.png";
+import doctorsHero from "../assets/doctors-hero.webp";
 
 import Container from "../components/layout/Container";
 

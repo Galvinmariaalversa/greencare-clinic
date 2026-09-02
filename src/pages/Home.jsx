@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import SEO from "../components/seo/SEO";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
-import heroImage from "../assets/greencare-hero.png";
-import practiceImage from "../assets/practice.png";
+import heroImage from "../assets/greencare-hero.webp";
+import practiceImage from "../assets/practice.webp";
 
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";

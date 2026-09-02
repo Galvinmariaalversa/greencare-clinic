@@ -4,9 +4,9 @@ import aboutContent from "../data/about";
 import SEO from "../components/seo/SEO";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
-import aboutHeroImage from "../assets/about-hero.png";
-import clinicStoryImage from "../assets/clinic-story.png";
-import clinicEnvironmentImage from "../assets/clinic-environment.png";
+import aboutHeroImage from "../assets/about-hero.webp";
+import clinicStoryImage from "../assets/clinic-story.webp";
+import clinicEnvironmentImage from "../assets/clinic-environment.webp";
 
 function About() {
   return (
