@@ -1,16 +1,75 @@
-# React + Vite
+# 🏥 GreenCare Clinic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive healthcare clinic website built with React and Tailwind CSS.
 
-Currently, two official plugins are available:
+GreenCare Clinic is designed to provide patients with a clean, professional, and user-friendly experience when exploring healthcare services, doctors, clinic information, and appointment options.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌐 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 https://greencare-clinic.vercel.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 📱 Fully responsive design for mobile, tablet, and desktop
+- 🏥 Modern healthcare-focused user interface
+- 🏠 Professional homepage and hero section
+- 👨‍⚕️ Doctors listing and profile information
+- 🩺 Healthcare services section
+- 📅 Appointment call-to-actions
+- 📞 Contact page with form validation
+- 📍 Google Maps integration and directions
+- 🕒 Clinic working hours information
+- ❓ FAQ page with category filtering
+- 🔍 SEO optimization with page-specific metadata
+- 🎬 Smooth scroll reveal animations
+- ♿ Accessibility-focused navigation and interactions
+- 🖼️ Optimized WebP images for improved performance
+
+---
+
+## 🛠️ Technologies Used
+
+- React
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Framer Motion
+
+---
+
+## 📄 Pages
+
+The website includes the following pages:
+
+- Home
+- About
+- Doctors
+- Services
+- Contact
+- FAQ
+- Appointments
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+│
+├── assets/          # Images and static assets
+├── components/      # Reusable UI components
+│   ├── home/
+│   ├── layout/
+│   ├── seo/
+│   └── ui/
+│
+├── data/            # Clinic, doctors, services and FAQ data
+│
+├── pages/           # Application pages
+│
+├── App.jsx
+└── main.jsx
