@@ -9,10 +9,10 @@ function ScrollReveal({
   const shouldReduceMotion = useReducedMotion();
 
   const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: -40, y: 0 },
-    right: { x: 40, y: 0 },
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
+    left: { x: -20, y: 0 },
+    right: { x: 20, y: 0 },
   };
 
   const initialDirection =
@@ -40,10 +40,10 @@ function ScrollReveal({
       }
       viewport={{
         once: true,
-        amount: 0.15,
+        amount: 0.2,
       }}
       transition={{
-        duration: 0.7,
+        duration: 0.45,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
